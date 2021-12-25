@@ -63,7 +63,7 @@
 
 					<div id="estimate">
 						<div id="estimateBtn" class="rounded-pill">
-							<a href=""><b>견적 확인하기</b></a>
+							<a href="/contract/selectCondition.do"><b>견적 확인하기</b></a>
 						</div>
 					</div>
 
@@ -83,25 +83,25 @@
 										
 											<c:choose>
 												<c:when test="${sessionScope.member != null }">
-														<a href=""><c:out value="${sessionScope.member.userName}"></c:out> 님</a>
+														<a href="/contract/myEstimate.do"><c:out value="${sessionScope.member.userName}"></c:out> 님</a>
 												
 													<ul id="login_success">
-		                                        <li><a href="">마이페이지</a></li>
+		                                        <li><a href="/contract/myEstimate.do">마이페이지</a></li>
 		                                        
 												</c:when>
 												
 												
 												<c:when test="${sessionScope.company != null }">
-														<a href=""><c:out value="${sessionScope.company.coName}"></c:out> 님</a>
+														<a href="/views/company/companyMyPage.jsp"><c:out value="${sessionScope.company.coName}"></c:out> 님</a>
 														
 													<ul id="login_success">
-		                                        <li><a href="">마이페이지</a></li>												
+		                                        <li><a href="/views/company/companyMyPage.jsp">마이페이지</a></li>												
 												</c:when>
 												<c:otherwise>
-														<a href=""><c:out value="${sessionScope.admin.adminName}"></c:out> 님</a>
+														<a href="/admin/adminHome.do"><c:out value="${sessionScope.admin.adminName}"></c:out> 님</a>
 												
 													<ul id="login_success">
-		                                        <li><a href="">마이페이지</a></li>												
+		                                        <li><a href="/admin/adminHome.do">마이페이지</a></li>												
 												
 												</c:otherwise>											
 											</c:choose>											
@@ -147,25 +147,25 @@
 						
 						<%-- 개인 회원 로그인 시 --%>
 						<c:if test="${sessionScope.member != null }">
-							<li><a href=''>마이페이지(회원)</a></li>
-							<li><a href=''>공지사항 및 FAQ(회원)</a></li>
-							<li><a href=''>1:1 문의(회원)</a></li>
+							<li><a href='/contract/myEstimate.do'>마이페이지(회원)</a></li>
+							<li><a href='/board/memberNotice.do'>공지사항 및 FAQ(회원)</a></li>
+							<li><a href='/board/memberInquiry.do'>1:1 문의(회원)</a></li>
 						</c:if>
 						
 						<%-- 사업자 회원 로그인 시 --%>
 						<c:if test="${sessionScope.company != null }">
-							<li><a href=''>마이페이지(업체)</a></li>
-							<li><a href=''>공지사항 및 FAQ(업체)</a></li>
+							<li><a href='/admin/adminHome.do'>마이페이지(업체)</a></li>
+							<li><a href='/board/companyNotice.do'>공지사항 및 FAQ(업체)</a></li>
 						</c:if>
 						
 						
 						<%-- 관리자 회원 로그인시 보일 메뉴(추가 예정) --%>
 						<c:if test="${sessionScope.admin !=null }">
-								<li><a href=''>마이페이지(관리자)</a></li>
+								<li><a href='/admin/adminHome.do'>마이페이지(관리자)</a></li>
 						</c:if>
 						
-						<li><a href=''>우리 동네 업체 찾기</a></li>
-						<li><a href=''>청소 항목 소개</a></li>
+						<li><a href='/company/selectAllCompanyList.do'>우리 동네 업체 찾기</a></li>
+						<li><a href='/views/info/cleanType.jsp'>청소 항목 소개</a></li>
 					</ul>
 				</div>
 				<hr>
@@ -288,8 +288,8 @@
 						<h2>견적 확인 전에 클릭N클린이 궁금하다면?</h2>
 					</div>
 					<ul>
-						<li><a href="">우리 동네 업체 찾기</a></li>
-						<li><a href="">청소 항목&범위 소개</a></li>
+						<li><a href="/company/selectAllCompanyList.do">우리 동네 업체 찾기</a></li>
+						<li><a href="/views/info/cleanType.jsp">청소 항목&범위 소개</a></li>
 					</ul>
 
 
@@ -297,7 +297,7 @@
 				<div id="review">
 					<div class="inner_title">
 						<h2>실사용자가 작성한 솔직한 리뷰</h2>
-						<a href=""> 후기 더보기 > </a>
+						<a href="/company/selectAllCompanyList.do"> 후기 더보기 > </a>
 					</div>
 					<div id="review_inner">
 						<div class="container-xl" id="review_center">
