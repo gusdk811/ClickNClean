@@ -42,7 +42,7 @@ public class ContractServiceImpl implements ContractService{
 		ArrayList<Contract> list = conDAO.memberChoice(currentPage, conn, recordCountPerPage, userId);
 		
 		
-		int naviCountPerPage = 3;
+		int naviCountPerPage = 5;
 		
 		String pageNavi =  conDAO.getPageNavi(naviCountPerPage, conn, currentPage, recordCountPerPage, userId);
 		

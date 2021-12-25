@@ -93,7 +93,7 @@ public class ContractDAO {
 				StringBuilder sb = new StringBuilder();
 				
 				if(startNavi!=1) {
-					sb.append("<a href='/member/memberCheck.do?currentPage="+(startNavi-1)+"'>< Prev </a> ");
+					sb.append("<a href='/member/memberCheck.do?currentPage="+(startNavi-1)+"'> 이전  </a> ");
 				}
 				
 				for(int i=startNavi; i<=endNavi;i++ ) {
@@ -107,7 +107,7 @@ public class ContractDAO {
 				}
 				
 				if(endNavi!=pageTotalCount) {
-					sb.append("<a href='/member/memberCheck.do?currentPage="+(endNavi+1)+"'>Next ></a> ");
+					sb.append("<a href='/member/memberCheck.do?currentPage="+(endNavi+1)+"'> 다음 </a> ");
 				}
 				
 				return sb.toString();

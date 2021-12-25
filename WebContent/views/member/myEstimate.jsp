@@ -239,9 +239,11 @@
     #pageNavi{
             width: 37%;
             height: 70px;
-            margin: 0 auto;
-
+            margin: 0 375px;
         }
+    #pageNavi>span{
+    		text-decoration: none;
+    }
      
         .line{
             width: 800px;
@@ -437,7 +439,7 @@
                                     <td class="part"><h5><%=c.getReqDate() %></h5></td>
                                     <td style="color: white">sssss</td>
                                     <!-- 견적 리스트 페이지 연결 로직-->
-                                    <td> <input type="button" id="list" onclick="location.replace('/views/contract/conditionCompany.jsp');" class="btn rounded " style="background-color:#0E76B3; color: white" value="견적리스트"></td>
+                                    <td><a href="/contract/selectConditionCompany.do" class="btn btn-outline-primary" style="background-color:#0E76B3; color: white">견적 리스트</a></td>
                                 </tr>
                                 
                             </table>
@@ -447,7 +449,7 @@
                     
                 </div>
                 <!--페이지 네비 로직-->
-                <div id="pageNavi"><%=pageNavi %></div>
+                <div id="pageNavi"><span><%=pageNavi %></span></div>
              </div>
          </div>
           <div class="line"></div>
