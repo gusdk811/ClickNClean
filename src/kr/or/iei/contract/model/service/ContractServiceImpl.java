@@ -37,11 +37,12 @@ public class ContractServiceImpl implements ContractService{
 
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int recordCountPerPage = 3;
+		int recordCountPerPage = 4;
 		
 		ArrayList<Contract> list = conDAO.memberChoice(currentPage, conn, recordCountPerPage, userId);
 		
-		int naviCountPerPage = 5;
+		
+		int naviCountPerPage = 3;
 		
 		String pageNavi =  conDAO.getPageNavi(naviCountPerPage, conn, currentPage, recordCountPerPage, userId);
 		

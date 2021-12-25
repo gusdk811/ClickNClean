@@ -224,7 +224,7 @@
         border: 2px solid #0E76B3;
         width: 650px;
         height: 80px;
-        margin: 20px auto;
+        margin: 25px auto;
     }
         table{
             margin: 22px auto;
@@ -399,7 +399,7 @@
                     <div id="navigator">
                         <ul id="gnb">
                             <li><a href="/views/member/memberPwdCheck.jsp">개인정보수정</a></li>
-                            <li><a href="/member/myEstimate.do">나의 견적서</a></li>
+                            <li><a href="/member/memberCheck.do">나의 견적서</a></li>
                             <li><a href="/reiview/reviewList.do">이용내역</a></li>
                             <li><a href="">설정</a></li>
                         </ul>

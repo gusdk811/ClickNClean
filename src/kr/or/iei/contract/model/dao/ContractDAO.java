@@ -23,9 +23,9 @@ public class ContractDAO {
 		int end =  currentPage * recordCountPerPage;
 		
 		String query = "select * " + 
-					   "from(select row_number()over(order by conditionNo desc)as num, condition.*" + 
-					   "from condition" + 
-					   "left join contract on(condition.conditionNo=contract.conditionNo) " + 
+					   "from(select row_number()over(order by condition.conditionNo desc)as num, condition.* " + 
+					   "from condition " + 
+					   "left join contract on(condition.userId=contract.userId) " + 
 					   "where contract.userId=?) " + 
 					   "where num between ? and ?";
 		
@@ -36,7 +36,7 @@ public class ContractDAO {
 				
 				pstmt.setString(1, userId);
 				pstmt.setInt(2, start);
-				pstmt.setInt(2, end);
+				pstmt.setInt(3, end);
 
 				
 				rset = pstmt.executeQuery();
@@ -70,6 +70,7 @@ public class ContractDAO {
 			
 	}	
 			
+	
 			
 		public String getPageNavi(int naviCountPerPage, Connection conn, int currentPage, int recordCountPerPage, String userId) {
 
@@ -92,21 +93,21 @@ public class ContractDAO {
 				StringBuilder sb = new StringBuilder();
 				
 				if(startNavi!=1) {
-					sb.append("<a href='/reiview/reservationList.do?currentPage="+(startNavi-1)+"'>< Prev </a> ");
+					sb.append("<a href='/member/memberCheck.do?currentPage="+(startNavi-1)+"'>< Prev </a> ");
 				}
 				
 				for(int i=startNavi; i<=endNavi;i++ ) {
 					
 					if(i==currentPage) {
-						sb.append("<a href='/reiview/reservationList.do?currentPage="+i+"'><B style='font-size:1.2em'>"+i+"</B></a> ");
+						sb.append("<a href='/member/memberCheck.do?currentPage="+i+"'><B style='font-size:1.2em'>"+i+"</B></a> ");
 				
 					}else {
-						sb.append("<a href='/reiview/reservationList.do?currentPage="+i+"'>"+i+"</a> ");
+						sb.append("<a href='/member/memberCheck.do?currentPage="+i+"'>"+i+"</a> ");
 					}
 				}
 				
 				if(endNavi!=pageTotalCount) {
-					sb.append("<a href='/reiview/reservationList.do?currentPage="+(endNavi+1)+"'>Next ></a> ");
+					sb.append("<a href='/member/memberCheck.do?currentPage="+(endNavi+1)+"'>Next ></a> ");
 				}
 				
 				return sb.toString();
@@ -124,6 +125,8 @@ public class ContractDAO {
 			try {
 				pstmt = conn.prepareStatement(query);
 				
+				pstmt.setString(1, userId);
+				
 				rset = pstmt.executeQuery();
 				
 				if(rset.next()) {
@@ -140,6 +143,7 @@ public class ContractDAO {
 			}
 			return count;
 			}
+			
 			
 
 	public ArrayList<Company> selectConditionCompany(String area, String cleanType, Connection conn) {
