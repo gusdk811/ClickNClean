@@ -8,6 +8,7 @@
 </head>
 <body>
 	<script>
+		alert('비밀번호 재확인 해주세요.');
 		location.replace('/views/member/memberPwdCheck.jsp');
 	</script>
 </body>

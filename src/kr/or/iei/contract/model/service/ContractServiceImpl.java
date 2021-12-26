@@ -56,4 +56,29 @@ public class ContractServiceImpl implements ContractService{
 		return map;
 	}
 
+	@Override
+	public HashMap<String, Object> searchMemberCondition(String startDate, String endDate, String userId, int currentPage) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int recordCountPerPage = 4;
+		
+		ArrayList<Contract> list = conDAO.searchDateCondition(startDate, endDate, userId, conn, currentPage);
+		
+		int naviCountPerPage = 5;
+		
+		String pageNavi =  conDAO.getPageNavi_searchDate(naviCountPerPage, conn, currentPage, recordCountPerPage, userId, startDate, endDate);
+		
+		JDBCTemplate.close(conn);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("list", list);
+		map.put("pageNavi", pageNavi);
+		
+		return map;
+		
+	}
+
+	
+
 }

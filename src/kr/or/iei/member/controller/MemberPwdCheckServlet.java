@@ -47,7 +47,7 @@ public class MemberPwdCheckServlet extends HttpServlet {
 		if(m!=null) {
 			
 			session.setAttribute("member", m); 
-			RequestDispatcher view = request.getRequestDispatcher("/views/member/MemberMyPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/views/member/memberMyPage.jsp");
 			view.forward(request, response);
 			
 		}else {

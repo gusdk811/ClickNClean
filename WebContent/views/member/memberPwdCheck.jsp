@@ -331,15 +331,15 @@
 <body>
 
 <%
-		Member m = (Member)session.getAttribute("member");
+      Member m = (Member)session.getAttribute("member");
 %>
 
 <%if(m==null){ %>
 
 <script>
 
-	alert('로그인 후 이용해주세요.');
-	location.replace('/views/member/loginMemberCompany.jsp');
+   alert('로그인 후 이용해주세요.');
+   location.replace('/views/member/loginMemberCompany.jsp');
 </script>
 <%} %>
 
@@ -377,11 +377,11 @@
                  <div id="navigator">
                         <ul id="gnb">
                             <li><a href="/views/member/memberPwdCheck.jsp">개인정보수정</a></li>
-                            <li><a href="/member/memberCheck.do">나의 견적서</a></li>
+                            <li><a href="/member/myEstimate.do">나의 견적서</a></li>
                             <li><a href="/reiview/reviewList.do">이용내역</a></li>
                             <li><a href="">설정</a></li>
                         </ul>
-           		 </div>
+                  </div>
             </div> 
          <div class="line"></div>
          

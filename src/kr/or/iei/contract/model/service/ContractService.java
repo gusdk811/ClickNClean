@@ -14,5 +14,14 @@ public interface ContractService {
 	HashMap<String, Object> MemberChoice(int currentPage, String userId);
 
 	int insertCondition(Contract con);
+
+
+	/**
+	 * @Author : Hyuna 
+	 * @Date : 2021. 12. 26
+	 * @return : HashMap<String, Object> 
+	 * @subscription : 나의 견적서 리스트 가져오기
+	 */
+	HashMap<String, Object> searchMemberCondition(String startDate, String endDate, String userId, int currentPage);
 	
 }

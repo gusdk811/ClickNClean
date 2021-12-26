@@ -1,7 +1,7 @@
-<%@page import="kr.or.iei.member.model.vo.Member"%>
+
+<%@page import="java.util.HashMap"%>
 <%@page import="kr.or.iei.contract.model.vo.Contract"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -195,7 +195,7 @@
         }
         #content-2{
             width: 100%;
-            
+
         }
         #content2{
             width: 30%;
@@ -358,15 +358,13 @@
 <body>
 
 <%
-	HashMap<String,Object> map = (HashMap<String,Object>)request.getAttribute("map");
-	
+	HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
+
 	ArrayList<Contract> list = (ArrayList<Contract>)map.get("list");
-	
+
 	String pageNavi = (String)map.get("pageNavi");
-	
+
 	int currentPage = (int)request.getAttribute("currentPage");
-
-
 %>
 
 

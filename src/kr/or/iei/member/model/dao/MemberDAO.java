@@ -78,6 +78,32 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int deleteOneMember(Connection conn, int userNo) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update member set end_YN='Y' where userNo=?"; 
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, userNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("deleteOneMember() 메소드 에러");
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+		
+		
+	}
+
 	
 
 }

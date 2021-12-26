@@ -1,7 +1,6 @@
-package kr.or.iei.contract.controller;
+package kr.or.iei.member.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,22 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import kr.or.iei.contract.model.service.ContractService;
-import kr.or.iei.contract.model.service.ContractServiceImpl;
+import kr.or.iei.member.model.service.MemberService;
+import kr.or.iei.member.model.service.MemberServiceImpl;
 import kr.or.iei.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberChoiceServlet
+ * Servlet implementation class MemberWithDrawServlet
  */
-@WebServlet(name = "UserChoiceServlet", urlPatterns = { "/contract/myEstimate.do" })
-public class MemberChoiceServlet extends HttpServlet {
+@WebServlet("/member/memberWithDraw.do")
+public class MemberWithDrawServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberChoiceServlet() {
+    public MemberWithDrawServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,29 +33,27 @@ public class MemberChoiceServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
-		
-		System.out.println(userId);
-		
-		int currentPage;
-		
-		if(request.getParameter("currentPage")==null) {
 
-			currentPage  = 1;
+		HttpSession session = request.getSession();
+		Member m = (Member)session.getAttribute("member");
+		int userNo = m.getUserNo();
 		
+		
+		MemberService mService = new MemberServiceImpl();
+		int result = mService.deleteOneMember(userNo);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/views/member/memberWithDraw.jsp");
+		
+		if(result>0) {
+			request.setAttribute("result", true);
+			session.invalidate(); 
 		}else {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			request.setAttribute("result", false);
 		}
+		request.setAttribute("userId", m.getUserId());
 		
-		ContractService cService = new ContractServiceImpl();
-		HashMap<String, Object> map = cService.MemberChoice(currentPage,userId);
-		
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/myEstimate.jsp");
-		request.setAttribute("map", map);
-		request.setAttribute("currentPage", currentPage);
 		view.forward(request, response);
-		
+	
 	}
 
 	/**

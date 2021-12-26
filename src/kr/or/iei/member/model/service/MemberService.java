@@ -21,6 +21,14 @@ public interface MemberService {
 	 * @subscription : 회원 정보 수정 - 업데이트
 	 */
 	public int updateOneMember(Member m, String newPwd);
+	
+	/**
+	 * @Author : Hyuna 
+	 * @Date : 2021. 12. 26
+	 * @return : int 
+	 * @subscription : 회원  탈퇴
+	 */
+	public int deleteOneMember(int userNo);
 
 	
 

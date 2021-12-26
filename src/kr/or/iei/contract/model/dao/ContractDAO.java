@@ -228,4 +228,126 @@ public class ContractDAO {
 
 	}
 
+
+
+	public ArrayList<Contract> searchDateCondition(String startDate, String endDate, String userId, Connection conn, int currentPage) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Contract> list = new ArrayList<Contract>();
+		
+		String query = "SELECT * from condition where 1=1 and reqdate >= ? and reqdate <= ? " + 
+					   "and userId=? order by reqdate asc";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, startDate);
+			pstmt.setString(2, endDate);
+			pstmt.setString(3, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Contract cd = new Contract();
+				
+				cd.setConditionNo(rset.getInt("conditionNo"));
+				cd.setUserId(rset.getString("userId"));
+				cd.setCleanType(rset.getString("cleanType"));
+				cd.setHouseType(rset.getString("houseType"));
+				cd.setArea(rset.getString("area"));
+				cd.setHouseSize(rset.getInt("houseSize"));
+				cd.setReqDate(rset.getDate("reqDate"));
+				
+				list.add(cd);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
+
+	//나의 견적서 날짜 조회 페이지 네비
+	public String getPageNavi_searchDate(int naviCountPerPage, Connection conn, int currentPage, int recordCountPerPage,
+			String userId, String startDate, String endDate) {
+		
+		int recordtotalCount = totalSearchDateCount(conn, userId, startDate, endDate); 
+		
+		int pageTotalCount = 0; //전체 페이지 개수
+			
+		pageTotalCount = (int)Math.ceil(recordtotalCount / (double)recordCountPerPage);
+			
+		int startNavi = (((currentPage - 1) / naviCountPerPage) * naviCountPerPage) +1;
+		int endNavi = startNavi + (naviCountPerPage - 1);
+			
+			
+		if(endNavi > pageTotalCount) {
+			
+			endNavi = pageTotalCount;
+		}
+		
+			StringBuilder sb = new StringBuilder();
+			
+			if(startNavi!=1) {
+				sb.append("<a href='/contract/searchDate.do?currentPage="+(startNavi-1)+"'> 이전  </a> ");
+			}
+			
+			for(int i=startNavi; i<=endNavi;i++ ) {
+				
+				if(i==currentPage) {
+					sb.append("<a href='/contract/searchDate.do?currentPage="+i+"'><B style='font-size:1.2em'>"+i+"</B></a> ");
+			
+				}else {
+					sb.append("<a href='/contract/searchDate.do?currentPage="+i+"'>"+i+"</a> ");
+				}
+			}
+			
+			if(endNavi!=pageTotalCount) {
+				sb.append("<a href='/contract/searchDate.do?currentPage="+(endNavi+1)+"'> 다음 </a> ");
+			}
+			
+			return sb.toString();
+		
+		
+	}
+	//나의 견적서 날짜 조회한 글 개수
+	public int totalSearchDateCount(Connection conn, String userId, String startDate, String endDate) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+			
+		int count = 0;
+		String query = "select count(*) as count from condition where userId=? and TO_date(?, 'YY/MM/dd') <= TO_date(?, 'YY/MM/dd')";
+			
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, startDate);
+			pstmt.setString(3, endDate);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+					
+				count = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return count;
+		}
 }

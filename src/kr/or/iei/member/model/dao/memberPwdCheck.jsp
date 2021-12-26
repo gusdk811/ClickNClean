@@ -1,19 +1,14 @@
 <%@page import="kr.or.iei.member.model.vo.Member"%>
-<%@page import="kr.or.iei.contract.model.vo.Contract"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.HashMap"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-     <!--JQuery CDM-->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <style>
+    
+        <style>
           * {
         box-sizing: border-box;
         font-family: 'NanumSquare';
@@ -24,7 +19,7 @@
             background-color: #fafafa;
         }
         /*헤더 부분 */
-           #header {
+        #header {
 
         width: 100%;
         /*height: 92px;*/
@@ -59,7 +54,7 @@
     }
 
     .logoImg {
-         width: 200px;
+        width: 200px;
         height: 44px;
         margin: 13px 0 0 7.5px;
     }
@@ -152,7 +147,7 @@
         }
         #gnb a {
             text-decoration: none;
-            color: #555;
+             color: #555;
             width: 100%;
             display: block;
             font-size: 20px;
@@ -172,80 +167,57 @@
         #gnb a:hover {
             color: white;
         }
-        #gnb li:active {
-            background-color: #0E76B3;
-        }
-        #gnb a:active {
-            color: white;
-        }
         /* 콘텐트 부분 */
           #content{
             width: 1344px;
-            height: 640px;
+            height: 550px;
             margin: 0 auto;
         }
-           #content1{
+         #content1{
             width: 800px;
             height: 100%;
             margin: 0 auto;
         }
-        #content-1{
-            width: 100%;
-            height: 120px;
-        }
-        #content-2{
-            width: 100%;
-            
-        }
         #content2{
-            width: 30%;
-            height: 100%;
-            float: left;
+            width: 600px;
+            height: 500px;
+            margin: 100px auto;
         }
         #content3{
-            width: 69%;
-            height: 100%;
-           float: left;
+            width: 500px;
+            height: 400px;
+            margin: 20px auto;
         }
-         #detail{
+          #h4{
             display: block;
-            font-size: 35px;
-            position: relative;
-            top: 46px;
-            left: 60px;
             color: #555;
         }
-          #content3-1{
-        width: 80%;
-        height: 40px;
-        margin: 59px 120px;
-    }
-    .estimate{
-        border: 2px solid #0E76B3;
-        width: 650px;
-        height: 80px;
-        margin: 25px auto;
-    }
-        table{
-            margin: 22px auto;
+        #span{
+            display: block;
+            font-size: 13px;
+             color: #555;
         }
-        #list{
-            width: 100px;
-            height: 40px;
-            position: relative;
-            top: -5px;
-            color: #555;
+         #pwd:after{
+           content: "*";
+            color: coral;
         }
-    #pageNavi{
-            width: 37%;
-            height: 70px;
-            margin: 0 375px;
+        .input{
+           line-height: 40px;
+        }
+        .mypage-td{
+            width : 150px;
+            height : 90px;
             text-align : center;
         }
-    #pageNavi>span{
-    		text-decoration: none;
-    }
-     
+        #table{
+            margin: 70px 0;
+        }
+        #pwdCheck{
+            width: 150px;
+            height: 50px;
+            margin: -20px 200px;
+            
+        }
         .line{
             width: 800px;
             height: 6px;
@@ -354,29 +326,30 @@
     }
         
     </style>
+    
 </head>
 <body>
 
 <%
-	HashMap<String,Object> map = (HashMap<String,Object>)request.getAttribute("map");
-	
-	ArrayList<Contract> list = (ArrayList<Contract>)map.get("list");
-	
-	String pageNavi = (String)map.get("pageNavi");
-	
-	int currentPage = (int)request.getAttribute("currentPage");
-
-
+		Member m = (Member)session.getAttribute("member");
 %>
 
+<%if(m==null){ %>
+
+<script>
+
+	alert('로그인 후 이용해주세요.');
+	location.replace('/views/member/loginMemberCompany.jsp');
+</script>
+<%} %>
 
  <div id="wrap">
-        <div id="header">
-              <div id="header">
+        
+           <div id="header">
             <div id="headerFixed">
                 <div id="headerInner">
                     <div id="logo">
-                        <a href=""><img src="image/%ED%81%B4%EB%A6%ADN%ED%81%B4%EB%A6%B0_3nor.png" class="logoImg"></a>
+                        <a href=""><img src="" class="logoImg"></a>
                     </div>
 
                     <div id="estimate">
@@ -394,69 +367,56 @@
                 </div>
                   </div>
         </div>
+  
+        
          <!-- 로그인로고 -->
           <div id="mypage">
             <span id="mypageFont">마이페이지</span>
-            </div>    
-               <div id="submenu">
-                    <div id="navigator">
+          </div>    
+          <div id="submenu">
+                 <div id="navigator">
                         <ul id="gnb">
                             <li><a href="/views/member/memberPwdCheck.jsp">개인정보수정</a></li>
                             <li><a href="/member/memberCheck.do">나의 견적서</a></li>
                             <li><a href="/reiview/reviewList.do">이용내역</a></li>
                             <li><a href="">설정</a></li>
                         </ul>
-            </div>
-         </div> 
+           		 </div>
+            </div> 
          <div class="line"></div>
          
-         <!--회원 정보 수정 비밀번호 체크-->
+        
          <div id="content">
              <div id="content1">
-               <div id="content-1">
-                <div id="content2">
-                     <span id="detail">견적내역</span>
-                </div>
-                <div id="content3">
-                  <div id="content3-1">
-                     <form action="/contract/searchDate.do" method="post">
-                         <input type="date" name="startDate" min="2000-01-01" value="2020-01-01" class="rounded" style="color:#555"/>  -  
-                         <input type="date" name="endDate" name="sysdate" class="rounded " style="color:#555"/>   
-                         <input type="submit" value="조회" class="btn rounded " style="background-color:#0E76B3; color: white; height:33px" />
-                         
-                      </form>
-                    </div>
-                </div>
-                </div>
-                <div id="content-2">
-                    
-                    <%for(Contract c : list){ %>
-                    
-                    <div  class="rounded estimate">
-                        <form>
-                            <table>
+               <div id="content2">
+                     <h4 id="h4">비밀번호 재확인</h4>
+                 <span id="span">회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인해주세요.</span>
+                   <div id="content3">
+                        <form action="/member/memberPwdCheck.do" method="post">
+                            <table id="table">
                                 <tr>
-                                    <td class="part"><h5><%=c.getCleanType() %> /</h5></td>
-                                    <td class="part"><h5><%=c.getHouseType() %> <%=c.getHouseSize() %> / </h5></td>
-                                    <td class="part"><h5><%=c.getArea() %> / </h5></td>
-                                    <td class="part"><h5><%=c.getReqDate() %></h5></td>
-                                    <td style="color: white">sssss</td>
-                                    <!-- 견적 리스트 페이지 연결 로직-->
-                                    <td><a href="/contract/selectConditionCompany.do" class="btn btn-outline-primary" style="background-color:#0E76B3; color: white">견적 리스트</a></td>
+                                    <td class="mypage-td">아이디</td>
+                                    <td>
+                                        <input type="text"  size="35" class="input rounded border border-primary" style="background-color: #72CCFF; text-align: center;" disabled value="<%=m.getUserId() %>"/>
+                                    </td>
+                                </tr> 
+                                <tr>
+                                    <td class="mypage-td ico srcreen_out" id="pwd">비밀번호</td>
+                                    <td>
+                                        <input type="password" name="userPwd"  size="35" height="50px" class="input border border-primary rounded" style="text-align: center;"/>
+                                    </td>
                                 </tr>
-                                
-                            </table>
-                        </form>
-                    </div>
-                    <%} %>
-                    
-                </div>
-                <!--페이지 네비 로직-->
-                <div id="pageNavi"><%=pageNavi %></div>
+                           </table>
+                               <button type="submit" id="pwdCheck" class="btn rounded " style="background-color:#0E76B3; color: white" >확인</button>
+                       </form>
+                   </div>
+      
+                
+                 </div>
              </div>
          </div>
           <div class="line"></div>
-         
+          <!-- 풋터 영역 -->
           <div id="footer-1"></div>
                 <div id="footer">
                <div id="caution">
@@ -500,8 +460,10 @@
                     </div>
                 </div>
           </div>
-        </div>
+       
     </div>
-    
+
+
+
 </body>
 </html>
