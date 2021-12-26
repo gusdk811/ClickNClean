@@ -207,13 +207,14 @@ public class ContractDAO {
 		String query="insert into condition values(condition_seq.nextval,?,?,?,?,?,?)";
 		try {
 			pstmt=conn.prepareStatement(query);
-			//pstmt.setString(1, userId);
-			//pstmt.setString(2,con.getCleanType);
-			//pstmt.setString(3,con.getHouseType);
-			//pstmt.setString(4,con.getArea);
-			//pstmt.setString(5,con.getHouseSize);
-			//pstmt.setString(6,con.getreqDate);
+			pstmt.setString(1, con.getUserId());
+			pstmt.setString(2,con.getCleanType());
+			pstmt.setString(3,con.getHouseType());
+			pstmt.setString(4,con.getArea());
+			pstmt.setInt(5,con.getHouseSize());
+			pstmt.setDate(6,con.getReqDate());
 			result=pstmt.executeUpdate();
+			
 
 			
 		} catch (SQLException e) {

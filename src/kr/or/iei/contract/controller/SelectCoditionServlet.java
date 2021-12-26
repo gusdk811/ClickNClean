@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import kr.or.iei.member.model.vo.Member;
 
 /**
  * Servlet implementation class selectCoditionServlet
@@ -28,8 +31,15 @@ public class SelectCoditionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		Member m=(Member)session.getAttribute("member");
+		if(m==null) {
+			response.sendRedirect("/views/member/loginMemberCompany.jsp");
+			return;
+		}
+		
 		RequestDispatcher view =request.getRequestDispatcher("/views/contract/selectCondition.jsp");
+		
 		view.forward(request, response);
 	}
 

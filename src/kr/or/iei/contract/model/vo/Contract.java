@@ -17,7 +17,6 @@ public class Contract {
 	private Date contractFinDate;
 	private char cleanYN;
 	private Date cleanDate;
-	
 	private String cleanType;
 	private String houseType;
 	private String area;
@@ -160,8 +159,8 @@ public class Contract {
 		return cleanDate;
 	}
 
-	public void setCleanDate(Date cleanDate) {
-		this.cleanDate = cleanDate;
+	public void setCleanDate(Date date) {
+		this.cleanDate = date;
 	}
 
 	public String getCleanType() {

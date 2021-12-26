@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.iei.company.model.service.CompanyService;
+import kr.or.iei.company.model.service.CompanyServiceImpl;
+import kr.or.iei.company.model.vo.Company;
+
 /**
  * Servlet implementation class SelectProfileServlet
  */
@@ -30,7 +34,11 @@ public class SelectProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String coId=request.getParameter("coId");
 		
+		CompanyService comService= new CompanyServiceImpl();
+		Company com=comService.selectOneCompany(coId);
+		
 		RequestDispatcher view =request.getRequestDispatcher("/views/company/companyProfile.jsp");
+		request.setAttribute("com", com);
 		view.forward(request, response);
 	}
 

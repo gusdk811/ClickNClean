@@ -38,7 +38,6 @@ public class SelectAllCompanyListServlet extends HttpServlet {
 		
 		ArrayList<Company> list= comService.selectAllCompany();
 		
-		
 		RequestDispatcher view = request.getRequestDispatcher("/views/company/selectAllCompany.jsp");
 		
 		request.setAttribute("list", list);

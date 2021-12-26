@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,15 +11,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
  <link href="/assets/css/footer.css" rel="stylesheet" type="text/css"/>
  <link href="/assets/css/cleanType.css" rel="stylesheet" type="text/css"/>
+ <link href="/assets/css/header.css" rel="stylesheet" type="text/css"/>
+
 <style>
 
 </style>
 
 <body id="bodycss">
 
-    <div id="header">
-
-    </div>
+    <jsp:include page="/views/commons/header.jsp" />
     <div id="contentArea">
         <div class="contentHead">
             <div id="contentTitle">클릭N클린에 요청 할 수 있는 청소

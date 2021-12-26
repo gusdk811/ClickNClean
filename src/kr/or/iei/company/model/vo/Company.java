@@ -26,15 +26,17 @@ public class Company {
 	private String cleanType;
 	private int price;
 	private String tel;
+	private String roll;
+	private int sumScore;
+	private int reviewNum;
 	
 	
-	
-	
-	
+
+
 	public Company(int coNo, String coId, String coName, String coPwd, String phone, String ceoName, String email,
 			String busNum, String address, Date enrollDate, int team, int career, String grade, char sign_YN,
 			char end_YN, String logo, String coInfo, String meetHour, String workHour, String area, String cleanType,
-			int price, String tel) {
+			int price, String tel, String roll, int sumScore, int reviewNum) {
 		super();
 		this.coNo = coNo;
 		this.coId = coId;
@@ -59,6 +61,45 @@ public class Company {
 		this.cleanType = cleanType;
 		this.price = price;
 		this.tel = tel;
+		this.roll = roll;
+		this.sumScore = sumScore;
+		this.reviewNum = reviewNum;
+	}
+
+
+
+	public int getSumScore() {
+		return sumScore;
+	}
+
+
+
+	public void setSumScore(int sumScore) {
+		this.sumScore = sumScore;
+	}
+
+
+
+	public int getReviewNum() {
+		return reviewNum;
+	}
+
+
+
+	public void setReviewNum(int reviewNum) {
+		this.reviewNum = reviewNum;
+	}
+
+
+
+	public String getRoll() {
+		return roll;
+	}
+
+
+
+	public void setRoll(String roll) {
+		this.roll = roll;
 	}
 
 

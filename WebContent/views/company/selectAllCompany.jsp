@@ -8,91 +8,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Document</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link href="/assets/css/selectAllCompany.css" rel="stylesheet"
+<link href="/assets/css/selectAllCompany.css?after" rel="stylesheet" 
 	type="text/css" />
 <link href="/assets/css/footer.css" rel="stylesheet" type="text/css" />
+ <link href="/assets/css/header.css" rel="stylesheet" type="text/css"/>
 </head>
 <style>
-body {
-        font-family: "나눔스퀘어";
-        background-color: #fafafa;
-    }
 
-#header {
-	border: 1px solid #72CCFF;
-	width: 100%;
-	height: 92px;
-	box-sizing: content-box;
-}
-
-#contentArea {
-	width: 1344px;
-	padding: 50px;
-	margin: 0 auto;
-	margin-bottom: 50px;
-}
-
-.contentHead {
-	width: 1344px;
-	height: 200px;
-}
-
-#contentTitle {
-	display: block;
-	width: 100%;
-	margin-top: 100px;
-	font-size: 50px;
-	color: #0E76B3;
-	font-weight: bold;
-	text-align: center;
-}
-
-.contentBody {
-	border: 1px solid black;
-	width: 1116px;
-	height: 418px;
-	border-radius: 10px;
-	margin: 0 auto;
-	background-color:white;
-	box-shadow: 0px 3px 6px rgb(0 0 0/ 16%);
-}
-
-#category {
-	margin-top: 90px;
-	font-size: 23px;
-	float: left;
-}
-
-#categoryForm {
-	float: left;
-}
-
-#categoryTitle {
-	display: block;
-	float: left;
-	width: 130px;
-	padding-left: 20px;
-}
-
-.option {
-	margin-bottom: 10px;
-	margin-left: 10px;
-}
-
-.categoryDiv {
-	width: 100px;
-}
-
-#bodyTitle {
-	display: block;
-	text-align: center;
-	height: 50px;
-}
 </style>
 
 
@@ -102,7 +30,7 @@ body {
 	%>
 	
 
-	<div id="header"></div>
+	<jsp:include page="/views/commons/header.jsp" />
 	<div id="contentArea">
 		<div class="contentHead">
 			<span id="contentTitle">클릭N클린의 청소 업체 리스트</span>
@@ -158,35 +86,39 @@ body {
 		</div>
 		<hr>
 		<span id="bodyTitle"></span>
-		
+		<%for(Company com:list){ %>
 		<div class="contentBody">
 			<div id="left">
-				<div id="logoArea">
-					<img id="logo"
+				<div id="companyLogoArea">
+					
+					<img id="companyLogo"
 						src="/assets/img/%EB%B6%80%EB%B6%84%EC%B2%AD%EC%86%8C2.JPG">
+						
 				</div>
 				<div id="toInfoArea">
-					<form action="/company/selectProfile.do" method="post">
-						<input type="hidden" name="coId" value="" /> <input
-							type="submit" style="height: 60px"
+					<form action="/company/selectProfile.do" get="post">
+						<input type="hidden" name="coId" value="<%=com.getCoId() %>"  />
+						<input type="submit" style="height: 60px"
 							class="btn btn-outline-info" id="toInfoBtn" value="업체 프로필 보기">
-
-					</form>
+							
+						</form>
 				</div>
+				
 			</div>
 			<div id="right">
 				<div id="reviewArea">
-					<div id="review">평점 : // 리뷰수 :</div>
+					<div id="review">평점 :  / 리뷰수 :</div>
 				</div>
 				<div id="infoArea">
-					<div id="info">업체 소개</div>
+					<div id="info">업체소개<%=com.getCoInfo() %></div>
 				</div>
 				<div id="sideArea">
-					<div id="side">업무시간 / 지역 / 등등</div>
+					<div id="side">업무시간: <%=com.getWorkHour() %> / 상담시간: <%=com.getMeetHour() %> / 지역: <%=com.getArea() %> </div>
 				</div>
 			</div>
 		</div>
-		
+		<br><br>
+		<%} %>
 	</div>
 	<div id="footer">
 		<div id="caution">

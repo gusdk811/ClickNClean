@@ -1,22 +1,9 @@
 @charset "UTF-8";
-body {
-        font-family: "나눔스퀘어";
-        background-color: #fafafa;
-    }
+
 div {
 	box-sizing: border-box;
 }
 
-#bodycss {
-	font-family: "나눔스퀘어"
-}
-
-#header {
-	border: 1px solid #72CCFF;
-	width: 100%;
-	height: 92px;
-	box-sizing: content-box;
-}
 
 #contentArea {
 	width: 1344px;
@@ -102,6 +89,7 @@ div {
 
 #bodycss {
 	font-family: "나눔스퀘어 ";
+	 background-color: #fafafa;
 }
 
 #toInfoBtn {

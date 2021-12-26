@@ -14,5 +14,11 @@
 	</script>
 
 	
+   <script>
+      alert('비정상적인 접근을 시도하였습니다. \n 정상적인 방법으로 접근을 해주시길 바랍니다.');
+      location.replace("/");
+   </script>
+
+   
 </body>
 </html>

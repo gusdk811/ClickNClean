@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.or.iei.company.model.vo.Company"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -6,114 +8,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="/assets/css/conditionCompany.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/css/footer.css" rel="stylesheet" type="text/css" />
+     <link href="/assets/css/header.css" rel="stylesheet" type="text/css"/>
 </head>
 <style>
-body {
-        font-family: "나눔스퀘어";
-        background-color: #fafafa;
-    }
 
-    #header {
-        border: 1px solid #72CCFF;
-        width: 100%;
-        height: 70px;
-        box-sizing: content-box;
-    }
-
-    #contentArea {
-        width: 1344px;
-        height: 2000px;
-        margin: 0 auto;
-    }
-
-    .contentHead {
-        width: 1344px;
-        height: 200px;
-    }
-
-    #contentTitle {
-        display: block;
-        width: 100%;
-        margin-top: 100px;
-        font-size: 50px;
-        color: #0E76B3;
-        font-weight: bold;
-        text-align: center;
-		
-    }
-
-    .contentBody {
-        border: 1px solid black;
-        width: 1116px;
-        height: 418px;
-        border-radius: 10px;
-        margin: 0 auto;
-        box-shadow: 0px 3px 6px rgb(0 0 0/ 16%);
-    }
-
-    #category {
-        margin-top: 60px;
-        font-size: 30px;
-        float: left;
-        background-color:#fafafa;
-    }
-
-    #categoryForm {
-        float: left;
-    }
-
-    #categoryTitle {
-        display: block;
-        float: left;
-        width: 100%;
-        padding-left: 20px;
-    }
-    .option{
-        margin-bottom: 10px;
-        margin-left: 10px;
-    }
-    .categoryDiv {
-        width: 100px;
-    }
-    #bodyTitle{
-        display: block;
-        text-align: center;
-        height: 100px
-    }
-    #contractArea{
-        float: left;
-        width: 300px;
-        height: 100%;
-        margin-left: 53px;
-    }
-    #side{
-        float: left;
-        
-    }
 </style>
 
 <body id="bodycss">
-    <div id="header">
-
-    </div>
+	<%
+		ArrayList<Company> list=(ArrayList<Company>)request.getAttribute("list");
+	%>
+    <jsp:include page="/views/commons/header.jsp" />
     <div id="contentArea">
         <div class="contentHead">
             <span id="contentTitle">견적리스트</span>
             <div id="category">
                 <span id="categoryTitle">
-                조건사항: ${requestScope.cleanType}
+                조건사항: ${requestScope.condition}
                 </span>
             </div>
         </div>
         <span id="bodyTitle"></span>
-
+			<%for(Company com:list){ %>
             <div class="contentBody">
             <div id=left>
                <div id=logoArea>
-                   <img id=logo src="/assets/img/%EB%B6%80%EB%B6%84%EC%B2%AD%EC%86%8C2.JPG">
+                   <img id=CompanyLogo src="/assets/img/%EB%B6%80%EB%B6%84%EC%B2%AD%EC%86%8C2.JPG">
                </div> 
                <div id=toInfoArea>
                    <form>
@@ -148,7 +77,7 @@ body {
                 </div>
             </div>
         </div>
-
+			<%} %>
     </div>
 		<div id="footer">
 		<div id="caution">
