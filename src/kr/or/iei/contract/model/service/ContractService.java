@@ -22,6 +22,6 @@ public interface ContractService {
 	 * @return : HashMap<String, Object> 
 	 * @subscription : 나의 견적서 리스트 가져오기
 	 */
-	HashMap<String, Object> searchMemberCondition(String startDate, String endDate, String userId, int currentPage);
+	HashMap<String, Object> searchMemberCondition(String startdate,  String enddate, String userId, int currentPage);
 	
 }

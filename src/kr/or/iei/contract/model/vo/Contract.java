@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class Contract {
 
-	private int contractNo;
-	private int conditionNo;
+	private String contractNo;
+	private String conditionNo;
 	private String userId;
 	private String coId;
 	private int price;
@@ -22,15 +22,16 @@ public class Contract {
 	private String area;
 	private int houseSize;
 	private Date reqDate;
+	private String coName;
 	
 	public Contract() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Contract(int contractNo, int conditionNo, String userId, String coId, int price, char reqContractYN,
+	public Contract(String contractNo, String conditionNo, String userId, String coId, int price, char reqContractYN,
 			Date reqContractDate, char coCheckYN, Date coCheckDate, char contractYN, Date contractFinDate, char cleanYN,
-			Date cleanDate) {
+			Date cleanDate, String coName) {
 		super();
 		this.contractNo = contractNo;
 		this.conditionNo = conditionNo;
@@ -45,9 +46,10 @@ public class Contract {
 		this.contractFinDate = contractFinDate;
 		this.cleanYN = cleanYN;
 		this.cleanDate = cleanDate;
+		this.coName = coName;
 	}
 
-	public Contract(int conditionNo, String userId, String cleanType, String houseType, String area, int houseSize,
+	public Contract(String conditionNo, String userId, String cleanType, String houseType, String area, int houseSize,
 			Date reqDate) {
 		super();
 		this.conditionNo = conditionNo;
@@ -59,19 +61,21 @@ public class Contract {
 		this.reqDate = reqDate;
 	}
 
-	public int getContractNo() {
+	
+
+	public String getContractNo() {
 		return contractNo;
 	}
 
-	public void setContractNo(int contractNo) {
+	public void setContractNo(String contractNo) {
 		this.contractNo = contractNo;
 	}
 
-	public int getConditionNo() {
+	public String getConditionNo() {
 		return conditionNo;
 	}
 
-	public void setConditionNo(int conditionNo) {
+	public void setConditionNo(String conditionNo) {
 		this.conditionNo = conditionNo;
 	}
 
@@ -159,8 +163,8 @@ public class Contract {
 		return cleanDate;
 	}
 
-	public void setCleanDate(Date date) {
-		this.cleanDate = date;
+	public void setCleanDate(Date cleanDate) {
+		this.cleanDate = cleanDate;
 	}
 
 	public String getCleanType() {
@@ -201,6 +205,14 @@ public class Contract {
 
 	public void setReqDate(Date reqDate) {
 		this.reqDate = reqDate;
+	}
+
+	public String getCoName() {
+		return coName;
+	}
+
+	public void setCoName(String coName) {
+		this.coName = coName;
 	}
 
 	@Override

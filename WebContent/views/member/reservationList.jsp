@@ -1,4 +1,3 @@
-
 <%@page import="java.util.HashMap"%>
 <%@page import="kr.or.iei.contract.model.vo.Contract"%>
 <%@page import="java.util.ArrayList"%>
@@ -9,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
      <!--JQuery CDM-->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -59,9 +58,8 @@
     }
 
     .logoImg {
-         width: 200px;
-        height: 44px;
-        margin: 13px 0 0 7.5px;
+        width: 100%;
+        height: 100%;
     }
 
     #estimate {
@@ -172,86 +170,171 @@
         #gnb a:hover {
             color: white;
         }
-        #gnb li:active {
-            background-color: #0E76B3;
-        }
-        #gnb a:active {
-            color: white;
-        }
         /* 콘텐트 부분 */
           #content{
             width: 1344px;
-            height: 640px;
+            height: 810px;
             margin: 0 auto;
         }
-           #content1{
+        #content1{
             width: 800px;
             height: 100%;
             margin: 0 auto;
         }
         #content-1{
             width: 100%;
-            height: 120px;
-        }
-        #content-2{
-            width: 100%;
-			height : 430px;
-        }
-        #content2{
+            height: 140px;
+    }
+     #content1-1{
             width: 30%;
             height: 100%;
             float: left;
-        }
-        #content3{
+        
+    }
+    #content1-2{
             width: 69%;
             height: 100%;
            float: left;
-        }
-         #detail{
+       
+     }
+     #content-2{
+            width: 100%;
+            height: 600px;
+         padding: 10px 40px 0 40px;
+
+    }
+     #detail{
             display: block;
             font-size: 35px;
             position: relative;
             top: 46px;
             left: 60px;
-            color: #555;
+             color: #555;
+    }
+        #search{
+            border: none;
         }
-          #content3-1{
+        #sub{
+            width: 50%;
+            height: 30px;
+            position: relative;
+            left: 140px;
+            top: 0px;
+        }
+    #select{
         width: 80%;
         height: 40px;
-        margin: 59px 120px;
+        margin: 33px 120px;
     }
-    .estimate{
-        border: 2px solid #0E76B3;
-        width: 650px;
-        height: 80px;
-        margin: 25px auto;
-    }
-        table{
-            margin: 22px auto;
+        #subNavi{
+            width: 100%;
+            height: 34px;
         }
-        #list{
-            width: 100px;
-            height: 40px;
+        #subNavi a {
+            text-decoration: none;
+            color: black;
+            width: 100%;
+            display: block;
             position: relative;
-            top: -5px;
-            color: #555;
+            top: -15px;
+            font-size: 15px;
         }
-    #pageNavi{
-            width: 37%;
+        #subNavi li {
+           float: left;
+            width: 25%;
+            height: 100%;
+            list-style-type: none;
+            text-align: center;
+            line-height: 70px;
+            
+        }
+        #subNavi li:hover {
+            background-color: #0E76B3;
+        }
+        #subNavi a:hover {
+            color: white;
+        }
+        .reservation{
+            width: 270px;
+            height: 250px;
+            margin: 0 45px;
+            margin-bottom: 40px;
+            float: left;
+            border-radius: 5px;
+            border: 2px solid #0E76B3;
+        }
+        #pageNavi{
+            width: 100%;
             height: 70px;
             margin: 0 auto;
             text-align : center;
         }
-    #pageNavi>span{
-    		text-decoration: none;
-    }
-     
+        .cleanType{
+            width: 100%;
+            height: 53px;
+            padding-top: 10px;
+        }
+        .coPart{
+            width: 100%;
+            height: 148px;
+        }
+        .companyImg{
+            width: 40%;
+            height: 140px;
+            float: left;
+        }
+        .info{
+            width: 58%;
+            height: 140px;
+            float: left;
+           padding-top: 15px;
+            padding-left: 7px;
+        }
+        .reservationBtn{
+            width: 100%;
+            height: 45px;
+        }
+        .type{
+            font-size: 23px;
+            color: #555;
+            margin: 100px 80px;
+        }
+        .img{
+            width: 90px;
+            height: 90px;
+            border: 1px solid black;
+            margin: 26px 5px;
+        }
+         .resBtn{
+            width: 100%;
+            height: 47px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: none;
+        }
+        .info>p{
+            width: 100%;
+            font-size: 14px;
+           height: 14px;
+        }
+        
         .line{
             width: 800px;
             height: 6px;
             background-color: #0E76B3;
             margin : 0 auto;
         }
+        #noneList{
+        	display : block;
+        	position: relative;
+        	top : 190px;
+        	left : 230px;
+        }
+       
+        
+        
+        
+        
         /*footer 부분 */
          #footer-1{
             width: 100%;
@@ -359,18 +442,14 @@
 
 <%
 	HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
-
 	ArrayList<Contract> list = (ArrayList<Contract>)map.get("list");
-
 	String pageNavi = (String)map.get("pageNavi");
-
 	int currentPage = (int)request.getAttribute("currentPage");
 %>
 
-
  <div id="wrap">
         <div id="header">
-              <div id="header">
+            <div id="header">
             <div id="headerFixed">
                 <div id="headerInner">
                     <div id="logo">
@@ -384,7 +463,7 @@
                     <div id="menu">
                         <div id="login">
                             <ul>
-                                <li><a href="/member/logout.do">로그아웃</a></li>
+                                <li><a href="">로그아웃</a></li>
                             </ul>
                         </div>
                     </div>
@@ -399,9 +478,9 @@
                <div id="submenu">
                     <div id="navigator">
                         <ul id="gnb">
-                            <li><a href="/views/member/memberPwdCheck.jsp">개인정보수정</a></li>
+                           <li><a href="/views/member/memberPwdCheck.jsp">개인정보수정</a></li>
                             <li><a href="/member/memberCheck.do">나의 견적서</a></li>
-                            <li><a href="/reiview/reviewList.do">이용내역</a></li>
+                            <li><a href="/reiview/reservationList.do">이용내역</a></li>
                             <li><a href="">설정</a></li>
                         </ul>
             </div>
@@ -411,72 +490,84 @@
          <!--회원 정보 수정 비밀번호 체크-->
          <div id="content">
              <div id="content1">
-               <div id="content-1">
-                <div id="content2">
-                     <span id="detail">견적내역</span>
-                </div>
-                <div id="content3">
-                  <div id="content3-1">
-                     <form action="/contract/searchDate.do" method="get">
-                         <input type="date" name="startDate" min="2000-01-01" value="2021-01-01" class="rounded" style="color:#555"/>  -  
-                         <input type="date" name="endDate"  class="rounded " style="color:#555"/>   
-                         <input type="submit" value="조회" class="btn rounded " style="background-color:#0E76B3; color: white; height:33px" />
+                 <div id="content-1">
+               <div id="content1-1">
+                    <span id="detail">이용내역</span>
+               </div>
+               <div id="content1-2">
+                  <div id="sub">
+                        <ul id="subNavi">
+                            <li><a href="/reiview/reservationList.do">예약확정</a></li>
+                            <li><a href="/review/review.do">리뷰작성</a></li>
+                            <li><a href="/review/reviewList.do">리뷰보기</a></li>
+                        </ul></div>
+                   <div id="select">
+                    <form>
+                         <input type="date" name="pastDate" min="2000-01-01" value="2020-01-01" class="rounded"/>  -  <input type="date" id="currentDate" name="sysdate" class="rounded "/>   <input type="button" id="search" value="조회" class=" rounded " style="background-color:#0E76B3; color: white; height:33px" />
                          
                       </form>
                     </div>
-                </div>
-                </div>
-                <div id="content-2">
-                    
-                  <%if(!list.isEmpty()) {%>
-                    <%for(Contract c : list){ %>
-                    
-                    <div  class="rounded estimate">
+               </div>
+                 </div>
+                      <!-- 업체 정보 필요 이용 내역 로직-->
+              <div id="content-2">
+              
+              
+              <% if(!list.isEmpty()){ %>
+              
+              	<% for(Contract c : list){ %>
+              
+                  <div class="reservation">
+                      <div class="cleanType">
+                          <span class="type"><%=c.getCleanType() %></span>
+                      </div>
+                    <div class="coPart">
+                      <div class="companyImg">
+                          <div class="img">
+                          </div>
+                      </div>
+                      <div class="info">
+                           
+                              <p><%=c.getCoName() %></p>
+                              <!-- 조건문 돌리기 예약확정 Y/N 일 경우 날짜 -->
+                              <p>예약확정 : -</p>
+                              <p>청소날짜 : <%=c.getCleanDate() %></p>
+                              <p>총 가격 : <%=c.getPrice() %>원</p>
+                          
+                           </div>
+                      </div>
+                      <div class="reservationBtn">
+                       <!-- 버튼 누를시 진짜 확정 지을건지 alert 창 띄우기-->
                        
-                            <table>
-                                <tr>
-                                    <td class="part"><h5><%=c.getCleanType() %> /</h5></td>
-                                    <td class="part"><h5><%=c.getHouseType() %> <%=c.getHouseSize() %> / </h5></td>
-                                    <td class="part"><h5><%=c.getArea() %> / </h5></td>
-                                    <td class="part"><h5><%=c.getReqDate() %></h5></td>
-                                    <td style="color: white">sssss</td>
-                                    <!-- 견적 리스트 페이지 연결 로직-->
-                            <form action="/contract/selectConditionCompany.do" method="post">
-                            		
-                            		<%
-                            		    String [] str = c.getArea().split(" ");
-                            			String area1 = str[0];
-                            			String area2 = str[1];
-                            		%>
-                            		
-                            		    <input type="hidden" name="area1" value="<%=area1%>"/>
-                            		<input type="hidden" name="area2" value="<%=area2%>"/>
-
-                            		<input type="hidden" name="cleanType" value="<%=c.getCleanType() %>"/>
-                            		<input type="hidden" name="houseType" value="<%=c.getHouseType() %>"/>
-                            		<input type="hidden" name="reqDate" value="<%=c.getReqDate() %>"/>
-                            		<input type="hidden" name="conditionNo" value="<%=c.getConditionNo() %>"/>
-                            		<input type="hidden" name="houseSize" value="<%=c.getHouseSize() %>"/>
-                            		
-                                    <td><input type="submit" value="견적리스트" class="btn btn-outline-primary" style="background-color:#0E76B3; color: white"></td>
-                             </form>
-                                </tr>
-                                
-                            </table>
-                       
-                    </div>
-                    <%} %>
-                    <%}else{ %>
-                    	<h4>현재 이용내역이 없습니다.</h4>
-                    
-                    <%} %>
-                </div>
-                <!--페이지 네비 로직-->
-                <div id="pageNavi"><%=pageNavi %></div>
+                       <% if(c.getCoCheckYN()=='Y') {%>
+                       <form action="" method="post">
+                       	<input type="hidden" name="resConfirm" value=""/><!-- 값을 뭐 보내야하지... -->
+                        <input type="submit"  id="resBtn" class="resBtn"  style="background-color:#0E76B3; color: white" value="예약확정하기">
+                      </form>
+                      
+                       <%}else if(c.getCoCheckYN()=='N'){ %>
+                       	 <input type="button" class="resBtn"  style="background-color:#0E76B3; color: white" value="업체 문의중">
+                       <%} %>
+                      </div>
+                  </div>
+                  
+                  <%} %>
+                
+                  
+          
+                  <%}else{ %>
+                  		
+                  			<h5 id="noneList">이용 내역이 존재하지 않습니다.</h5>
+                  		
+                  <%} %>
+              </div>
+                
+                <!-- 페이지 네비 로직-->
+                 <div id="pageNavi"><%=pageNavi %></div>
              </div>
          </div>
           <div class="line"></div>
-         
+          <!-- 풋터 영역 -->
           <div id="footer-1"></div>
                 <div id="footer">
                <div id="caution">
@@ -523,5 +614,23 @@
         </div>
     </div>
     
+    <script>
+        $('#resBtn').click(function(){
+        	
+        	var result = window.confirm('예약을 확정하시겠습니까?');
+        	
+        	if(result){
+        		
+        		alert('예약이 확정되었습니다.');
+        		result = true;
+        	}else{
+        		result = false;
+        	}
+        	
+        });
+        
+    </script>
+    
+
 </body>
 </html>

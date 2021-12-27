@@ -41,11 +41,13 @@ public class ContractDAO {
 				
 				rset = pstmt.executeQuery();
 				
+				
+				
 				while(rset.next()) {
 					
 					Contract cd = new Contract();
 					
-					cd.setConditionNo(rset.getInt("conditionNo"));
+					cd.setConditionNo(rset.getString("conditionNo"));
 					cd.setUserId(rset.getString("userId"));
 					cd.setCleanType(rset.getString("cleanType"));
 					cd.setHouseType(rset.getString("houseType"));
@@ -231,21 +233,31 @@ public class ContractDAO {
 
 
 
-	public ArrayList<Contract> searchDateCondition(String startDate, String endDate, String userId, Connection conn, int currentPage) {
+	public ArrayList<Contract> searchDateCondition(String startdate, String enddate, String userId, Connection conn, int currentPage, int recordCountPerPage) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Contract> list = new ArrayList<Contract>();
 		
-		String query = "SELECT * from condition where 1=1 and reqdate >= ? and reqdate <= ? " + 
-					   "and userId=? order by reqdate asc";
+		int start = currentPage * recordCountPerPage - (recordCountPerPage-1);
+		int end =  currentPage * recordCountPerPage;
+		
+		String query = "select *" + 
+						"from(select row_number()over(order by condition.reqdate asc)as num, condition.*  " + 
+						"from condition " + 
+						"left join contract on(condition.userId=contract.userId) " + 
+						"where contract.userId=?and TO_date(?, 'YY/MM/dd') <= TO_date(?, 'YY/MM/dd')) " + 
+						"where num between ? and ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setString(1, startDate);
-			pstmt.setString(2, endDate);
-			pstmt.setString(3, userId);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, startdate);
+			pstmt.setString(3, enddate);
+			pstmt.setInt(4, start);
+			pstmt.setInt(5, end);
+			
 			
 			rset = pstmt.executeQuery();
 			
@@ -253,7 +265,7 @@ public class ContractDAO {
 				
 				Contract cd = new Contract();
 				
-				cd.setConditionNo(rset.getInt("conditionNo"));
+				cd.setConditionNo(rset.getString("conditionNo"));
 				cd.setUserId(rset.getString("userId"));
 				cd.setCleanType(rset.getString("cleanType"));
 				cd.setHouseType(rset.getString("houseType"));
@@ -297,21 +309,21 @@ public class ContractDAO {
 			StringBuilder sb = new StringBuilder();
 			
 			if(startNavi!=1) {
-				sb.append("<a href='/contract/searchDate.do?currentPage="+(startNavi-1)+"'> 이전  </a> ");
+				sb.append("<a href='/contract/searchDate.do?startDate="+startDate+"&endDate="+endDate+"&currentPage="+(startNavi-1)+"'> 이전  </a> ");
 			}
 			
 			for(int i=startNavi; i<=endNavi;i++ ) {
 				
 				if(i==currentPage) {
-					sb.append("<a href='/contract/searchDate.do?currentPage="+i+"'><B style='font-size:1.2em'>"+i+"</B></a> ");
+					sb.append("<a href='/contract/searchDate.do?startDate="+startDate+"&endDate="+endDate+"&currentPage="+i+"'><B style='font-size:1.2em'>"+i+"</B></a> ");
 			
 				}else {
-					sb.append("<a href='/contract/searchDate.do?currentPage="+i+"'>"+i+"</a> ");
+					sb.append("<a href='/contract/searchDate.do?startDate="+startDate+"&endDate="+endDate+"&currentPage="+i+"'>"+i+"</a> ");
 				}
 			}
 			
 			if(endNavi!=pageTotalCount) {
-				sb.append("<a href='/contract/searchDate.do?currentPage="+(endNavi+1)+"'> 다음 </a> ");
+				sb.append("<a href='/contract/searchDate.do?startDate="+startDate+"&endDate="+endDate+"&currentPage="+(endNavi+1)+"'> 다음 </a> ");
 			}
 			
 			return sb.toString();

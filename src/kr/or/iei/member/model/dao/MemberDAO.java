@@ -53,18 +53,37 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = "update member set userName=?, phone=?, email=?, userPwd=? where userId=? and userPwd=? and end_YN='N'";
+		String query = "";
+		
+		if(newPwd.equals("")) {
+			
+			query = "update member set userName=?, phone=?, email=? where userId=? and userPwd=? and end_YN='N'";
+
+		}else {
+			
+			query = "update member set userName=?, phone=?, email=?, userPwd=? where userId=? and userPwd=? and end_YN='N'";
+		}
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
-			
-			pstmt.setString(1, m.getUserName());
-			pstmt.setString(2, m.getPhone());
-			pstmt.setString(3, m.getEmail());
-			pstmt.setString(4, newPwd);
-			pstmt.setString(5, m.getUserId());
-			pstmt.setString(6, m.getUserPwd());
+			if(newPwd.equals("")) {
+				
+				pstmt.setString(1, m.getUserName());
+				pstmt.setString(2, m.getPhone());
+				pstmt.setString(3, m.getEmail());
+				pstmt.setString(4, m.getUserId());
+				pstmt.setString(5, m.getUserPwd());
+				
+			}else {
+				
+				pstmt.setString(1, m.getUserName());
+				pstmt.setString(2, m.getPhone());
+				pstmt.setString(3, m.getEmail());
+				pstmt.setString(4, newPwd);
+				pstmt.setString(5, m.getUserId());
+				pstmt.setString(6, m.getUserPwd());
+			}
 			
 			
 			result = pstmt.executeUpdate();

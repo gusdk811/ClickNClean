@@ -36,7 +36,6 @@ public class MemberChoiceServlet extends HttpServlet {
 		
 		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
 		
-		System.out.println(userId);
 		
 		int currentPage;
 		

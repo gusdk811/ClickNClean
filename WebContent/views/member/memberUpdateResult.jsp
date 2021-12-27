@@ -22,7 +22,7 @@
 			alert('회원 정보 수정을 실패하였습니다.\n 지속적인 문제 발생 시 관리자에게 문의바랍니다.');
 			
 	<%	} %>
-		location.replace("/member/memberPwdCheck.do");
+		location.replace("/views/member/memberPwdCheck.jsp");
 	</script>
 
 </body>

@@ -236,7 +236,7 @@
         #btnPart{
            text-align: center;
         }
-         #withdraw{
+         .withdraw{
             display: inline-block;
              position: relative;
              height: 45px;
@@ -244,7 +244,7 @@
              left: 20px;
             top: 24px;
         }
-        #mypageReset{
+        .mypageReset{
          display: inline-block;
             position: relative;
             height: 45px;
@@ -252,7 +252,7 @@
             left: 30px;
             top: 24px;
         }
-        #cancle{
+        .cancle{
            display: inline-block;
             position: relative;
             left: 40px;
@@ -432,7 +432,7 @@
                     <tr>
                         <td class="mypage-td ico srcreen_out"><span>현재 비밀번호</span></td>
                         <td>
-                            <input type="password" name="userPwd" size="35" height="50px" class="input border border-primary rounded" style="text-align: center"/>
+                            <input type="password" name="userPwd" size="35" height="50px" class="input border border-primary rounded" value="<%=m.getUserPwd() %>" style="text-align: center"/>
                         </td>
                     </tr>
                     <tr>
@@ -486,9 +486,9 @@
                     </tr>
                     <tr id="btnPart">
                         <td id="withBtn" colspan="4"> 
-                       <input type="button" name="withdraw" onclick="return withDraw();"  class="btn rounded " style="border: 1px solid #0E76B3; color: #0E76B3;" value="계정탈퇴">
-                      <!--  <input type="submit" id="mypageReset" class="btn rounded " style="background-color:#0E76B3; color: white" value="회원정보수정">
-                     <input type="button" id="cancle" onclick="location.replace('/views/member/memberPwdCheck.jsp');" class="btn rounded " style="border: 1px solid #0E76B3; color: #0E76B3;" value="취소">--></td>
+                       <input type="button" name="withdraw" onclick="return withDraw();"  class="btn rounded withdraw" style="border: 1px solid #0E76B3; color: #0E76B3;" value="계정탈퇴">
+                       <input type="button" name="mypageReset" onclick="return myPageReset();"class="btn rounded mypageReset" style="background-color:#0E76B3; color: white" value="회원정보수정">
+                       <input type="button" name="cancle" onclick="return cancleBtn();" class="btn rounded cancle" style="border: 1px solid #0E76B3; color: #0E76B3;" value="취소"></td>
                     </tr>
                 </table>
                  </form>
@@ -567,32 +567,36 @@
         
         function withDraw() {
             
-            if(confirm("선택하신 상품을  찜리스트에 담으시겠습니까?")) {
+            if(confirm("탈퇴를 진행하시겠습니까?")&& confirm("탈퇴를 하시게 되면, 데이터는 절대 복구 불가능합니다.")) {
                 var frm = document.frmUpdate;
                     frm.action = "/member/memberWithDraw.do";
+                    
                     frm.submit();
                     return true;
             }
-        }
+        };
         
+        function myPageReset(){
+        	 
+
+        	var frm = document.frmUpdate;
+        		frm.action = "/member/memberUpdate.do";
+        		frm.submit();
+        		return true;
+        	
+        };
+        
+        function cancleBtn(){
+        	
+        	var frm = document.frmUpdate;
+    		frm.action = "/views/member/memberPwdCheck.jsp";
+    		frm.submit();
+    		return true;
+        }
         
     </script>
     
-    <script>
-    document.getElementById("withdraw").onclick=function(){
-		
-		if(window.confirm("탈퇴를 진행하시겠습니까?") && window.confirm("탈퇴를 하시게 되면, 데이터는 절대 복구 불가능합니다.")){
-			var i = 1;
-			window.location('/member/memberWithDraw.do');	
-			return true;
-		}else{
-			var i = 2;
-			return false;
-		}
-		console.log(i);
-		
-	};
-    </script>
+   
      
 </body>
 </html>

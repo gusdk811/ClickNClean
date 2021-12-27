@@ -3,6 +3,7 @@ package kr.or.iei.contract.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,17 +51,48 @@ public class SearchDateServlet extends HttpServlet {
 		}else {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
+		/* String startDate = request.getParameter("startDate");
+		 
+		 
+		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
 		
+       
+        try {
+			Date date = new Date(sdf.parse(startDate).getTime());
+			
+			System.out.println(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		//변경할 날짜
 		String startDate = request.getParameter("startDate");
-		
-		startDate = String.join("/", startDate.split("-"));
-		
+		System.out.println(startDate);
 		String endDate = request.getParameter("endDate");
-		
-		endDate = String.join("/", endDate.split("-"));
-		
+		System.out.println(endDate);
 		
 		
+		//현재 날짜의 타입 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+		//Date로 파싱
+		java.util.Date start;
+		java.util.Date end;
+		try {
+			start = dateFormat.parse(startDate);
+			end = dateFormat.parse(endDate);
+			
+			//변경할 타입으로의 형 변환
+			String startdate = new SimpleDateFormat("yy/MM/dd").format(start);
+			String enddate = new SimpleDateFormat("yy/MM/dd").format(end);
+			System.out.println(startdate);
+			System.out.println(enddate);
+
+		
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
@@ -72,6 +104,8 @@ public class SearchDateServlet extends HttpServlet {
 		request.setAttribute("map", map);
 		request.setAttribute("currentPage", currentPage);
 		view.forward(request, response);
+		
+		
 	}
 
 	/**

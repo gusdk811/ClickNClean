@@ -1,7 +1,6 @@
 package kr.or.iei.review.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -11,22 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.iei.contract.model.vo.Contract;
 import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.review.model.service.ReviewService;
 import kr.or.iei.review.model.service.ReviewServiceImpl;
 
 /**
- * Servlet implementation class ReservationListServlet
+ * Servlet implementation class ReviewServlet
  */
-@WebServlet("/reiview/reservationList.do")
-public class ReservationListServlet extends HttpServlet {
+@WebServlet("/review/review.do")
+public class ReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReservationListServlet() {
+    public ReviewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +34,7 @@ public class ReservationListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int currentPage;
+int currentPage;
 		
 		if(request.getParameter("currentPage")==null) {
 
@@ -49,10 +47,10 @@ public class ReservationListServlet extends HttpServlet {
 		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
 		
 		ReviewService rService = new ReviewServiceImpl();
-		HashMap<String, Object> map = rService.inqueryhistory(userId, currentPage);
+		HashMap<String, Object> map = rService.review(userId, currentPage);
 		
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/reservationList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/member/review.jsp");
 		request.setAttribute("map", map);
 		request.setAttribute("currentPage", currentPage);
 		view.forward(request, response);

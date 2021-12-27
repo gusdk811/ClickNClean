@@ -195,7 +195,7 @@
         }
         #content-2{
             width: 100%;
-            
+            height : 430px;
         }
         #content2{
             width: 30%;
@@ -229,6 +229,12 @@
         table{
             margin: 22px auto;
         }
+        
+      #cleanType>{
+      		width : 70px;
+      		height : 100%;
+      		font-size:20px;
+      }
         #list{
             width: 100px;
             height: 40px;
@@ -239,7 +245,7 @@
     #pageNavi{
             width: 37%;
             height: 70px;
-            margin: 0 375px;
+            margin: 0 auto;
             text-align : center;
         }
     #pageNavi>span{
@@ -403,7 +409,7 @@
                         <ul id="gnb">
                             <li><a href="/views/member/memberPwdCheck.jsp">개인정보수정</a></li>
                             <li><a href="/member/memberCheck.do">나의 견적서</a></li>
-                            <li><a href="/reiview/reviewList.do">이용내역</a></li>
+                            <li><a href="/reiview/reservationList.do">이용내역</a></li>
                             <li><a href="">설정</a></li>
                         </ul>
             </div>
@@ -419,9 +425,9 @@
                 </div>
                 <div id="content3">
                   <div id="content3-1">
-                     <form action="/contract/searchDate.do" method="post">
-                         <input type="date" name="startDate" min="2000-01-01" value="2020-01-01" class="rounded" style="color:#555"/>  -  
-                         <input type="date" name="endDate" name="sysdate" class="rounded " style="color:#555"/>   
+                     <form action="/contract/searchDate.do" method="get">
+                         <input type="date" name="startDate" min="2000-01-01" value="2021-01-01" class="rounded" style="color:#555"/>  -  
+                         <input type="date" name="endDate" class="rounded sysdate"   style="color:#555"/>   
                          <input type="submit" value="조회" class="btn rounded " style="background-color:#0E76B3; color: white; height:33px" />
                          
                       </form>
@@ -433,20 +439,38 @@
                     <%for(Contract c : list){ %>
                     
                     <div  class="rounded estimate">
-                        <form>
+                      
                             <table>
                                 <tr>
-                                    <td class="part"><h5><%=c.getCleanType() %> /</h5></td>
+                                    <td colspan="2"><h5><%=c.getCleanType() %> /</h5></td>
                                     <td class="part"><h5><%=c.getHouseType() %> <%=c.getHouseSize() %> / </h5></td>
                                     <td class="part"><h5><%=c.getArea() %> / </h5></td>
                                     <td class="part"><h5><%=c.getReqDate() %></h5></td>
                                     <td style="color: white">sssss</td>
                                     <!-- 견적 리스트 페이지 연결 로직-->
-                                    <td><a href="/contract/selectConditionCompany.do" class="btn btn-outline-primary" style="background-color:#0E76B3; color: white">견적 리스트</a></td>
+                                    
+                             <form action="/contract/selectConditionCompany.do" method="post">
+                            		
+                            		<%
+                            		    String [] str = c.getArea().split(" ");
+                            			String area1 = str[0];
+                            			String area2 = str[1];
+                            		%>
+                            		
+                            		<input type="hidden" name="area1" value="<%=area1%>"/>
+                            		<input type="hidden" name="area2" value="<%=area2%>"/>
+                            		<input type="hidden" name="cleanType" value="<%=c.getCleanType() %>"/>
+                            		<input type="hidden" name="houseType" value="<%=c.getHouseType() %>"/>
+                            		<input type="hidden" name="reqDate" value="<%=c.getReqDate() %>"/>
+                            		<input type="hidden" name="conditionNo" value="<%=c.getConditionNo() %>"/>
+                            		<input type="hidden" name="houseSize" value="<%=c.getHouseSize() %>"/>
+                            		
+                                    <td><input type="submit" value="견적리스트" class="btn btn-outline-primary" style="background-color:#0E76B3; color: white"></td>
+                             </form>
                                 </tr>
                                 
                             </table>
-                        </form>
+                      
                     </div>
                     <%} %>
                     
@@ -503,5 +527,11 @@
         </div>
     </div>
     
+    
+    <script>
+
+   		 document.getElementByClassName('sysdate').value = new Date().toISOString().substring(0, 10);
+
+    </script>
 </body>
 </html>
