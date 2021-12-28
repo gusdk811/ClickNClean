@@ -539,16 +539,26 @@
                         <input type="button" id="reviewBtn" onclick="winOpen()" class="resBtn"  style="background-color:#0E76B3; color: white" value="리뷰작성">
                       </div>
                   </div>
+                  
+                   <script>
+				        function winOpen(){
+				        	 window.open("/views/member/reviewWriteWindow.jsp?coId=<%=c.getCoId()%>&contractNo=<%=c.getContractNo()%>","_blank","width=1000px,height=900px");
+				        };
+				    </script>
+                  
+                 </div>
+                
+                <!-- 페이지 네비 로직-->
+                 <div id="pageNavi"><%=pageNavi %></div>
+                  
+                  
                  <%} %>
                 
                   <%}else{ %>
                   			<h5 id="noneList">이용 내역이 존재하지 않습니다.</h5>
                   <%} %>
                   
-              </div>
-                
-                <!-- 페이지 네비 로직-->
-                 <div id="pageNavi"><%=pageNavi %></div>
+              
              </div>
          </div>
           <div class="line"></div>
@@ -600,11 +610,7 @@
     </div>
     
     
-    <script>
-        function winOpen(){
-        	 window.open("/views/member/reviewWriteWindow.jsp","_blank","width=1344px,height=1000px");
-        };
-    </script>
+   
 
 </body>
 </html>

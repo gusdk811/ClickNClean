@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import kr.or.iei.contract.model.vo.Contract;
+import kr.or.iei.review.model.vo.Review;
 
 public interface ReviewService {
 
@@ -33,5 +34,31 @@ public interface ReviewService {
 	 * @subscription : 작성된 리뷰 리스트 
 	 */
 	HashMap<String, Object> reviewWriteList(String userId, int currentPage);
+
+	int insertReviewWrite(Review r);
+
+	Review selectOneReview(int contractNo);
+
+	int searchReviewNo(Review r);
+	
+	/**
+	 * @param currentPage 
+	 * @Author : Hyuna 
+	 * @Date : 2021. 12. 28
+	 * @return : int
+	 * @subscription : 리뷰 작성완료 누르면 clean_YN='Y' 로 바꾸기 
+	 */
+	int updateCleanYN(int contractNo, String userId);
+	
+	/**
+	 * @param currentPage 
+	 * @Author : Hyuna 
+	 * @Date : 2021. 12. 28
+	 * @return : int
+	 * @subscription : 리뷰 수정
+	 */
+	int reviewContentUpdate(String content, int reviewNo);
+
+	int reviewDelete(int reviewNo, String userId);
 
 }

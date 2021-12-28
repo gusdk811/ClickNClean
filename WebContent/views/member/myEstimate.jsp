@@ -258,6 +258,22 @@
             background-color: #0E76B3;
             margin : 0 auto;
         }
+        
+         #noneList{
+        	display : block;
+        	position: relative;
+        	top : 190px;
+        	left : 230px;
+        }
+        #td1{
+      		table-layout:fixed;
+        	
+        }
+         table{
+      		table-layout:fixed;
+        	
+        }
+        
         /*footer 부분 */
          #footer-1{
             width: 100%;
@@ -435,6 +451,8 @@
                 </div>
                 </div>
                 <div id="content-2">
+                
+                <%if(!list.isEmpty()){ %>
                     
                     <%for(Contract c : list){ %>
                     
@@ -442,11 +460,11 @@
                       
                             <table>
                                 <tr>
-                                    <td colspan="2"><h5><%=c.getCleanType() %> /</h5></td>
+                                    <td id="td1"><h5><%=c.getCleanType() %> /</h5></td>
                                     <td class="part"><h5><%=c.getHouseType() %> <%=c.getHouseSize() %> / </h5></td>
                                     <td class="part"><h5><%=c.getArea() %> / </h5></td>
                                     <td class="part"><h5><%=c.getReqDate() %></h5></td>
-                                    <td style="color: white">sssss</td>
+                                    <td style="color: white">ssssssss</td>
                                     <!-- 견적 리스트 페이지 연결 로직-->
                                     
                              <form action="/contract/selectConditionCompany.do" method="post">
@@ -465,7 +483,8 @@
                             		<input type="hidden" name="conditionNo" value="<%=c.getConditionNo() %>"/>
                             		<input type="hidden" name="houseSize" value="<%=c.getHouseSize() %>"/>
                             		
-                                    <td><input type="submit" value="견적리스트" class="btn btn-outline-primary" style="background-color:#0E76B3; color: white"></td>
+                                    <td id="td2"><input type="submit" value="견적리스트" class="btn btn-outline-primary" style="background-color:#0E76B3; color: white;"></td>
+                            
                              </form>
                                 </tr>
                                 
@@ -474,6 +493,11 @@
                     </div>
                     <%} %>
                     
+                    <%}else{ %>
+                    	
+                  			<h5 id="noneList">견적 내역이 존재하지 않습니다.</h5>
+                  		
+                    <%} %>
                 </div>
                 <!--페이지 네비 로직-->
                 <div id="pageNavi"><%=pageNavi %></div>

@@ -79,6 +79,21 @@ public class ContractServiceImpl implements ContractService{
 		
 	}
 
+	@Override
+	public int updateContractYN(String userId, int contractNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		int result = conDAO.updateContractYN(conn, userId, contractNo);
+		
+		if(result>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+		
+	}
+
 	
 
 }

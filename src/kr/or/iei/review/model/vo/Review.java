@@ -8,23 +8,29 @@ public class Review {
 	private int contractNo;
 	private String userId;
 	private String coId;
+	private String content;
 	private int score;
 	private Date regDate;
 	private String photo;
 	private char endYN;
+	
+	
+	
+	
 	
 	public Review() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Review(int reviewNo, int contractNo, String userId, String coId, int score, Date regDate, String photo,
+	public Review(int reviewNo, int contractNo, String userId, String coId, String content, int score, Date regDate, String photo,
 			char endYN) {
 		super();
 		this.reviewNo = reviewNo;
 		this.contractNo = contractNo;
 		this.userId = userId;
 		this.coId = coId;
+		this.content = content;
 		this.score = score;
 		this.regDate = regDate;
 		this.photo = photo;
@@ -61,6 +67,16 @@ public class Review {
 
 	public void setCoId(String coId) {
 		this.coId = coId;
+	}
+	
+	
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public int getScore() {

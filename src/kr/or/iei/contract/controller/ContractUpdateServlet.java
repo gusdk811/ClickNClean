@@ -1,30 +1,28 @@
-package kr.or.iei.review.controller;
+package kr.or.iei.contract.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.iei.contract.model.service.ContractService;
+import kr.or.iei.contract.model.service.ContractServiceImpl;
 import kr.or.iei.member.model.vo.Member;
-import kr.or.iei.review.model.service.ReviewService;
-import kr.or.iei.review.model.service.ReviewServiceImpl;
 
 /**
- * Servlet implementation class ReviewListServlet
+ * Servlet implementation class ContractUpdateServlet
  */
-@WebServlet("/review/reviewList.do")
-public class ReviewListServlet extends HttpServlet {
+@WebServlet("/contract/contractYNUpdate.do")
+public class ContractUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListServlet() {
+    public ContractUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +31,23 @@ public class ReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int currentPage;
 		
-		if(request.getParameter("currentPage")==null) {
-
-			currentPage  = 1;
+		int contractNo = Integer.parseInt(request.getParameter("contractNo"));
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
+	
 		
+		ContractService cService = new ContractServiceImpl();
+		int result = cService.updateContractYN(userId, contractNo);
+		
+		if(result>0) {
+			
+			response.sendRedirect("/reiview/reservationList.do?currentPage="+currentPage);
+			
 		}else {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			response.sendRedirect("/views/commons/error.jsp");
 		}
 		
-		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
-		
-		ReviewService rService = new ReviewServiceImpl();
-		HashMap<String, Object> map = rService.reviewWriteList(userId, currentPage);
-		
-		
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/reviewWriteList.jsp");
-		request.setAttribute("map", map);
-		request.setAttribute("currentPage", currentPage);
-		view.forward(request, response);
-	
 	}
 
 	/**

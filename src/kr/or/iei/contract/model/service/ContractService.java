@@ -23,5 +23,13 @@ public interface ContractService {
 	 * @subscription : 나의 견적서 리스트 가져오기
 	 */
 	HashMap<String, Object> searchMemberCondition(String startdate,  String enddate, String userId, int currentPage);
+
+	/**
+	 * @Author : Hyuna 
+	 * @Date : 2021. 12. 28
+	 * @return : HashMap<String, Object> 
+	 * @subscription : 예약 확정 누를 시 contract_YN='Y' 로 변경 
+	 */
+	int updateContractYN(String userId, int contractNo);
 	
 }

@@ -78,15 +78,17 @@ public class SearchDateServlet extends HttpServlet {
 		//Date로 파싱
 		java.util.Date start;
 		java.util.Date end;
+		String startdate = null;
+		String enddate = null;
 		try {
 			start = dateFormat.parse(startDate);
 			end = dateFormat.parse(endDate);
 			
 			//변경할 타입으로의 형 변환
-			String startdate = new SimpleDateFormat("yy/MM/dd").format(start);
-			String enddate = new SimpleDateFormat("yy/MM/dd").format(end);
-			System.out.println(startdate);
-			System.out.println(enddate);
+			startdate = new SimpleDateFormat("yy/MM/dd").format(start);
+			enddate = new SimpleDateFormat("yy/MM/dd").format(end);
+			System.out.println("변경후 :"+startdate);
+			System.out.println("변경 후 :"+enddate);
 
 		
 		} catch (ParseException e) {
@@ -98,7 +100,7 @@ public class SearchDateServlet extends HttpServlet {
 		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
 
 		ContractService cService = new ContractServiceImpl();
-		HashMap<String, Object> map = cService.searchMemberCondition(startDate, endDate, userId, currentPage);
+		HashMap<String, Object> map = cService.searchMemberCondition(startdate, enddate, userId, currentPage);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/member/selectDateSearchEstimate.jsp");
 		request.setAttribute("map", map);

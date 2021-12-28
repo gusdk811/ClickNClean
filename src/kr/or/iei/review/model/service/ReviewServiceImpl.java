@@ -7,6 +7,7 @@ import java.util.HashMap;
 import kr.or.iei.common.JDBCTemplate;
 import kr.or.iei.contract.model.vo.Contract;
 import kr.or.iei.review.model.dao.ReviewDAO;
+import kr.or.iei.review.model.vo.Review;
 
 public class ReviewServiceImpl implements ReviewService{
 
@@ -82,6 +83,93 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	
 	
+	}
+
+	@Override
+	public int insertReviewWrite(Review r) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = rDAO.inserReview(r, conn);
+		
+		if(result>0)JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	@Override
+	public Review selectOneReview(int contractNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Review r = rDAO.selectOneReview(conn, contractNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return r;
+	}
+
+	@Override
+	public int searchReviewNo(Review r) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int reviewNo = rDAO.searchBoardNo(conn, r);
+		
+		JDBCTemplate.close(conn);
+		
+		return reviewNo;
+		
+	}
+
+	@Override
+	public int updateCleanYN(int contractNo, String userId) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result1 = rDAO.updateCleanYN(conn, contractNo, userId);
+		
+		if(result1>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result1;
+	}
+
+	@Override
+	public int reviewContentUpdate(String content, int reviewNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = rDAO.reviewContentUpdate(conn, content, reviewNo);
+		
+		if(result>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+		
+	}
+
+	@Override
+	public int reviewDelete(int reviewNo, String userId) {
+		
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = rDAO.reviewDelete(conn, userId, reviewNo);
+		
+		if(result>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 }

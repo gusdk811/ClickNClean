@@ -15,187 +15,22 @@
             font-family: 'NanumSquare';
         }
 
-        #wrap {
-            width: 100%;
-            margin: 0 auto;
-            background-color: #fafafa;
-        }
-
-        /*헤더 부분 */
-        #header {
-
-        width: 100%;
-        /*height: 92px;*/
-        height: 70px;
-
-        background-color: #fafafa;
-
-    }
-
-    #headerFixed {
-        position: fixed;
-        width: 100%;
-        height: 70px;
-        background-color: #fafafa;
-        z-index: 98;
-    }
-
-
-    #headerInner {
-
-        width: 1344px;
-        height: 100%;
-        margin: 0 auto;
-
-    }
-
-    #logo {
-        width: 30%;
-        height: 100%;
-        float: left;
-        
-    }
-
-    .logoImg {
-        width: 100%;
-        height: 100%;
-    }
-
-    #estimate {
-
-        width: 40%;
-        height: 100%;
-
-        float: left;
-    }
-
-    
-    #estimateBtn>a {
-        text-decoration: none;
-        line-height: 46px;
-        font-size: 20px;
-        color: #0E76B3;
-    }
-
-    #menu {
-
-        width: 30%;
-        height: 100%;
-
-        float: left;
-    }
-
-    #login {
-        width: 80%;
-        height: 100%;
-        float: left;
-    }
-
-    #login>ul {
-
-        width: 320px;
-        height: 100%;
-        margin: 0;
-    }
-
-    #login>ul>li {
-        list-style: none;
-        width: 80px;
-        float: right;
-        display: inline;
-        margin-right: 30px;
-    }
-    
-    #menu a {
-        text-decoration: none;
-        font-size: 20px;
-        display: inline;
-
-        text-align: center;
-        color: #0E76B3;
-        font-weight: bold;
-        line-height: 70px;
-
-    }
-       
-
-        #mypage {
-            width: 1344px;
-            height: 120px;
-            margin: 0 auto;
-
-        }
-
-        #mypageFont {
-            position: relative;
-            font-size: 35px;
-            top: 38px;
-            left: 580px;
-            color: #555;
-        }
-
-        /* 메뉴 바 */
-        #submenu {
-            width: 1344px;
-            height: 67px;
-            margin: 0 auto;
-        }
-
-        #navigator {
-            height: 67px;
-            width: 800px;
-            margin: 0 auto;
-        }
-
-        #gnb {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        #gnb a {
-            text-decoration: none;
-            color: #555;
-            width: 100%;
-            display: block;
-            font-size: 20px;
-        }
-
-        #gnb li {
-            float: left;
-            width: 25%;
-            height: 100%;
-            list-style-type: none;
-            text-align: center;
-            line-height: 70px;
-
-        }
-
-        #gnb li:hover {
-            background-color: #0E76B3;
-        }
-
-        #gnb a:hover {
-            color: white;
-        }
-
         /* 콘텐트 부분 */
         #content {
             width: 1344px;
-            height: 950px;
-            margin: 0 auto;
+            height: 920px;
+            
         }
 
         #content1 {
             width: 800px;
             height: 100%;
-            margin: 0 auto;
+            margin: 0 100px;
         }
 
         #content-1 {
             width: 100%;
-            height: 140px;
+            height: 110px;
         }
 
         #content1-1 {
@@ -214,10 +49,10 @@
 
         #detail {
             display: block;
-            font-size: 35px;
+            font-size: 30px;
             position: relative;
-            top: 46px;
-            left: 60px;
+            top: 30px;
+            left: 340px;
             color: #555;
         }
 
@@ -399,109 +234,7 @@
             margin: 0 auto;
         }
 
-        /*footer 부분 */
-        #footer-1 {
-            width: 100%;
-            height: 66px;
-        }
-
-        #footer {
-            width: 100%;
-            height: 66px;
-
-        }
-
-        #footer_inner {
-            padding-top: 20px;
-            width: 100%;
-            height: 232px;
-        }
-
-        #caution {
-            border-top: 1px solid #D9D9D9;
-            border-bottom: 1px solid #D9D9D9;
-            width: 100%;
-            height: 70px;
-            color: #666;
-
-
-        }
-
-        #caution>p {
-            text-align: center;
-            line-height: 70px;
-            font-weight: 600;
-        }
-
-        #footer_inner_center {
-
-            width: 1344px;
-            height: 100%;
-            margin: 0 auto;
-        }
-
-        #footer_inner_left {
-
-            font-weight: bold;
-            width: 26%;
-            height: 100%;
-            padding-left: 83.52px;
-            float: left;
-        }
-
-        #footer_inner_left span {
-            font-size: 20px;
-            color: #666;
-        }
-
-        #footer_inner_left a {
-
-            font-size: 25px;
-            color: black;
-            text-decoration: none;
-            display: block;
-            height: 30px;
-            padding: 10px 0;
-        }
-
-        #footer_inner_right {
-
-            width: 74%;
-            height: 100%;
-            float: left;
-        }
-
-        #busyInfo {
-            color: #666;
-            font-weight: bold;
-            font-size: 13px;
-            float: left;
-            padding-left: 83.52px;
-        }
-
-        #busyInfo>p:first-child {
-            font-size: 20px;
-            color: #666;
-        }
-
-        #footer_inner_right ul {
-            float: right;
-            display: inline-block;
-            width: 250px;
-            padding-left: 50px;
-            list-style: none;
-        }
-
-        #footer_inner_right ul li {
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        #footer_inner_right ul li a {
-            text-decoration: none;
-            color: #666;
-            font-weight: bold;
-        }
+       
 
         /*별점 부분 */
 
@@ -565,47 +298,13 @@
     </style>
 </head>
 <body>
-    <div id="wrap">
-        <div id="header">
-              <div id="header">
-            <div id="headerFixed">
-                <div id="headerInner">
-                    <div id="logo">
-                        <a href=""><img src="image/%ED%81%B4%EB%A6%ADN%ED%81%B4%EB%A6%B0_3nor.png" class="logoImg"></a>
-                    </div>
+<%
+	int contractNo = Integer.parseInt(request.getParameter("contractNo"));
+	String coId = request.getParameter("coId");
 
-                    <div id="estimate">
-                       
-                    </div>
+%>
 
-                    <div id="menu">
-                        <div id="login">
-                            <ul>
-                                <li><a href="">로그아웃</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-           
-        </div>
-       
-       
-       
-        <div id="mypage">
-            <span id="mypageFont">마이페이지</span>
-        </div>
-        <div id="submenu">
-            <div id="navigator">
-                <ul id="gnb">
-                    <li><a href="">개인정보수정</a></li>
-                    <li><a href="">나의 견적서</a></li>
-                    <li><a href="">이용내역</a></li>
-                    <li><a href="">설정</a></li>
-                </ul>
-            </div>
-        </div>
+  
         <div class="line"></div>
 
         <!--회원 정보 수정 비밀번호 체크-->
@@ -615,16 +314,7 @@
                     <div id="content1-1">
                         <span id="detail">리뷰작성</span>
                     </div>
-                    <div id="content1-2">
-                        <div id="sub">
-                            <ul id="subNavi">
-                                <li><a href="">예약확정</a></li>
-                                <li><a href="">리뷰작성</a></li>
-                                <li><a href="">리뷰보기</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                     </div>
 
                 <!--업체 테이블 연결 필요-->
                 <div id="content-2">
@@ -650,9 +340,10 @@
                     <div id="serviceGood">
                         <p>청소 서비스는 어떠셨나요?</p>
                     </div>
+                    
+                    <form name="myform" id="myform" method="post" onsubmit="return false;">
                     <div id="star">
-                        <!--볌점 api 사용-->
-                        <form name="myform" id="myform" method="post" action="./save">
+                        
                             <fieldset>
 
                                 <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
@@ -661,68 +352,42 @@
                                 <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
                                 <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
                             </fieldset>
-                        </form>
-
-
+                      
                     </div>
                     <div id="reviewContent">
-                        <form>
+                    
+                     		<input type="hidden" name="contractNo" value="<%=contractNo%>"/>
+                     		<input type="hidden" name="coId" value="<%=coId%>"/>
+                     	
                             <textarea rows="12" cols="52" style="resize:none;" placeholder="내용을 입력하세요" name="content"></textarea>
                             <br><br>
-                            <input type="submit" id="complete" value="작성완료" class="btn rounded " style="border: 1px solid #0E76B3; color: #0E76B3;" />
-                            <input type="button" id="list" value="목록" class="btn rounded " style="background-color:#0E76B3; color: white" onclick="location.replace('');" />
+                            <input type="button" onclick="return reviewWrite();" id="complete" value="작성완료" class="btn rounded " style="border: 1px solid #0E76B3; color: #0E76B3;" />
+                            <input type="button" id="list" value="목록" class="btn rounded " style="background-color:#0E76B3; color: white" onclick="location.replace('/review/review.do');" />
                             <input type="reset" id="clear" class="btn rounded " style="border: 1px solid #0E76B3; color: #0E76B3;" value="초기화" />
-                        </form>
+                     
                     </div>
+                   </form> 
                 </div>
             </div>
         </div>
         <div class="line"></div>
-        <!-- 풋터 영역 -->
-        <div id="footer-1"></div>
-        <div id="footer">
-            <div id="caution">
-                <p>클릭N클린은 통신판매중개자로서 청소서비스의 주거래 당사자가 아니며, 청소서비스의 분쟁과 계약사항은 회원사와 당사자간에 있습니다.</p>
-            </div>
-        </div>
-        <div id="footer_inner">
-            <div id="footer_inner_center">
-                <div id="footer_inner_left">
-                    <span>클릭N클린 고객센터</span>
-                    <br>
-                    <a href="tel:010-3306-6303">010-3306-6303</a>
-                    <br>
-                    영업시간 : 09:00 ~ 18:00
-                    <br>
-                    (공휴일 휴무)
-                </div>
-                <div id="footer_inner_right">
-                    <div id="busyInfo">
-                        <p>클릭N클린(주)</p>
-                        <address>
-                            대표: 김승현
-                            <br>
-                            주소 : 서울특별시 중구 세종대로 136 파이낸스빌딩 3층 저스트코 S3119 (태평로1가)
-                            <br>
-                            사업자등록번호 : 585-86-00882
-                            <br>
-                            통신판매업번호 : 2017-인천계양-0583호
-                            <br>
-                            E-mail : help@clickNclean.co.kr
-                            <br>
-                            FAX : 070-5165-8603
-                        </address>
-                        <p>Copyright © 클릭N클린</p>
-                    </div>
-                    <ul>
-                        <li><a href="">개인정보취급방침</a></li>
-                        <li><a href="">이용약관</a></li>
-                        <li><a href="">관리자 페이지</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
+        
+        <script>
+		function reviewWrite() {
+            
+            if(confirm("리뷰를 등록하시겠습니까?")) {
+                var frm = document.myform;
+                    frm.action = "/review/reviewWrite.do";
+                    
+                    frm.submit();
+                    return true;
+            }
+        };
+        
+        </script>
+      
+        
+       
+ 
 </body>
 </html>

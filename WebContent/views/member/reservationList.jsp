@@ -540,8 +540,11 @@
                        <!-- 버튼 누를시 진짜 확정 지을건지 alert 창 띄우기-->
                        
                        <% if(c.getCoCheckYN()=='Y') {%>
-                       <form action="" method="post">
-                       	<input type="hidden" name="resConfirm" value=""/><!-- 값을 뭐 보내야하지... -->
+                       <form action="/contract/contractYNUpdate.do" method="post">
+                      
+                       	<input type="hidden" name="resConfirm" value="<%=c.getConditionNo()%>"/>
+                       	<input type="hidden" name="contractNo" value="<%=c.getContractNo()%>"/>
+                       	<input type="hidden" name="currentPage" value="<%=currentPage%>"/>
                         <input type="submit"  id="resBtn" class="resBtn"  style="background-color:#0E76B3; color: white" value="예약확정하기">
                       </form>
                       
@@ -550,6 +553,10 @@
                        <%} %>
                       </div>
                   </div>
+                    </div>
+                
+                <!-- 페이지 네비 로직-->
+                 <div id="pageNavi"><%=pageNavi %></div>
                   
                   <%} %>
                 
@@ -560,10 +567,7 @@
                   			<h5 id="noneList">이용 내역이 존재하지 않습니다.</h5>
                   		
                   <%} %>
-              </div>
-                
-                <!-- 페이지 네비 로직-->
-                 <div id="pageNavi"><%=pageNavi %></div>
+          
              </div>
          </div>
           <div class="line"></div>

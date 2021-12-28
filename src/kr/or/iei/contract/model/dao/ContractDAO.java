@@ -239,6 +239,9 @@ public class ContractDAO {
 		ResultSet rset = null;
 		ArrayList<Contract> list = new ArrayList<Contract>();
 		
+		System.out.println("DAO :"+startdate);
+		System.out.println("DAO :"+enddate);
+		
 		int start = currentPage * recordCountPerPage - (recordCountPerPage-1);
 		int end =  currentPage * recordCountPerPage;
 		
@@ -363,4 +366,31 @@ public class ContractDAO {
 		}
 		return count;
 		}
+
+
+
+	public int updateContractYN(Connection conn, String userId, int contractNo) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "update contract set contract_YN='Y',contractFinDate=sysdate where userid=? and contractNo=? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, contractNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+		
+	}
 }

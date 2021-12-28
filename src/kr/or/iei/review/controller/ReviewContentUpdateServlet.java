@@ -1,9 +1,8 @@
 package kr.or.iei.review.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,16 +14,16 @@ import kr.or.iei.review.model.service.ReviewService;
 import kr.or.iei.review.model.service.ReviewServiceImpl;
 
 /**
- * Servlet implementation class ReviewListServlet
+ * Servlet implementation class ReviewContentUpdateServlet
  */
-@WebServlet("/review/reviewList.do")
-public class ReviewListServlet extends HttpServlet {
+@WebServlet("/review/reviewContentUpdate.do")
+public class ReviewContentUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListServlet() {
+    public ReviewContentUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +32,29 @@ public class ReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int currentPage;
 		
-		if(request.getParameter("currentPage")==null) {
-
-			currentPage  = 1;
+		request.setCharacterEncoding("UTF-8");
 		
-		}else {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		}
 		
-		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		String content = request.getParameter("content");
+		
+		
+		System.out.println(content);
+		
+		
 		
 		ReviewService rService = new ReviewServiceImpl();
-		HashMap<String, Object> map = rService.reviewWriteList(userId, currentPage);
+		int result = rService.reviewContentUpdate(content, reviewNo);
+		PrintWriter out = response.getWriter();
 		
+		if(result>0) {
+			
+			out.print(true);
+		}else {
+			out.print(false);
+		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/reviewWriteList.jsp");
-		request.setAttribute("map", map);
-		request.setAttribute("currentPage", currentPage);
-		view.forward(request, response);
-	
 	}
 
 	/**

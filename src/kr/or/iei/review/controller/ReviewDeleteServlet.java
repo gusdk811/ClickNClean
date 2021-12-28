@@ -1,7 +1,6 @@
 package kr.or.iei.review.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,16 +14,16 @@ import kr.or.iei.review.model.service.ReviewService;
 import kr.or.iei.review.model.service.ReviewServiceImpl;
 
 /**
- * Servlet implementation class ReviewListServlet
+ * Servlet implementation class ReviewDeleteServlet
  */
-@WebServlet("/review/reviewList.do")
-public class ReviewListServlet extends HttpServlet {
+@WebServlet("/reviews/reviewDelete.do")
+public class ReviewDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListServlet() {
+    public ReviewDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +32,28 @@ public class ReviewListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int currentPage;
 		
-		if(request.getParameter("currentPage")==null) {
-
-			currentPage  = 1;
-		
-		}else {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		}
-		
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		String userId = ((Member)request.getSession().getAttribute("member")).getUserId();
 		
+		
 		ReviewService rService = new ReviewServiceImpl();
-		HashMap<String, Object> map = rService.reviewWriteList(userId, currentPage);
+		int result = rService.reviewDelete(reviewNo, userId);
 		
+		RequestDispatcher view = request.getRequestDispatcher("/views/member/deleteResult.jsp");
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/reviewWriteList.jsp");
-		request.setAttribute("map", map);
-		request.setAttribute("currentPage", currentPage);
+		if(result>0) {
+			
+			request.setAttribute("result", true);
+			
+		}else {
+			
+			request.setAttribute("result", false);
+		}
+		
 		view.forward(request, response);
-	
+		
+		
 	}
 
 	/**
