@@ -32,4 +32,8 @@ public interface ContractService {
 	 */
 	int updateContractYN(String userId, int contractNo);
 	
+	boolean checkCondition(Contract con);
+
+	int insertContract(String conditionNo, String userId, String coId, int price);
+	
 }

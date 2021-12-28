@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>엄체 게시판 - 공지사항 및 FAQ</title>
+<title>회원 게시판 - 리뷰</title>
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="/assets/css/theme.min.css">
@@ -24,7 +24,7 @@
         margin: 0 auto;
         
     }
-         /*헤더 부분 */
+        /*헤더 */
         #header{
             width: 100%;
             height: 70px;
@@ -58,7 +58,7 @@
             left: 580px;
             color: #555;
         }
-        /* 메뉴 바 */
+        /* 메뉴*/
            #navigator {
             height: 67px;
             width : 1344px;
@@ -99,7 +99,8 @@
             background-color: #0E76B3;
             margin : 0 auto;
         }
-    
+        
+        /*content*/
         #listsub{
         text-align: left;
         font-size: 30px;
@@ -231,8 +232,7 @@
 <body>
     
     <div id="wrap">
-    
-	<div id="header">
+<div id="header">
             <div id="logo">
           </div>
         </div>
@@ -244,15 +244,10 @@
                     <div id="navigator">
                         <ul id="gnb">
                             <li><a href="">Home</a></li>
-                            <li><a href="">관리자 계정</a></li>
-                            <li><a href="">전체 업체 LIST</a></li>
-                            <li><a href="">전체 회원 LIST</a></li>
-                            <li><a href="">게시판 관리</a>
-                            <ul class="sub">
-                                <li><a href="">sub</a></li>
-                                <li><a href="">sub</a></li>
-                                <li><a href="">sub</a></li>
-                            </ul></li>
+                            <li><a href="/admin/adminAccount.do">관리자 계정</a></li>
+                            <li><a href="/admin/companyAllList.do">전체 업체 LIST</a></li>
+                            <li><a href="/admin/memberAllList.do">전체 회원 LIST</a></li>
+                            <li><a href="/board/memberNotice.do">게시판 관리</a>
                             
                         </ul>
             </div>
@@ -260,27 +255,31 @@
          <div class="line"></div>
 
             <div style=" width: 100%;">
-                    <!--공지사항 및 FAQ (업체)--> 
-                   <div id= "listsub">
-                    <p>공지사항 및 FAQ (업체)</p>
+                   
+                    <!--리뷰(회원)--> 
+                    <div id= "listsub">
+                    <p>리뷰(회원)</p>
                 </div>
                 
             <div id = "search">
             <select style="height: 30px">
-             <option value = "username" selected>글제목</option>
-             <option value = "userid">작성일</option>
+             <option value = "username" selected>이름</option>
+             <option value = "userid">아이디</option>
+             <option value = "phone">휴대폰번호</option>
             </select>
                    
              <input type="text" placeholder="search">
               <button style="background-color: floralwhite; border-radius: 7px; color: #555">검색</button>
                 </div>
                 
-                <table class="table table-text-center">
+                <table class="table table-text-center ">
                     <thead style="">
                         <tr>
                             <th style="width: 5%;">번호</th>
-                            <th style="width: 55%;">글제목</th>
-                            <th style="width: 20%;">작성일</th>
+                            <th style="width: 10%;">이름</th>
+                            <th style="width: 15%;">아이디</th>
+                            <th style="width: 35%;">글제목</th>
+                            <th style="width: 15%;">작성일</th>
                             <th style="width: 10%;">수정</th>
                             <th style="width: 10%;">삭제</th>
                         </tr>
@@ -288,6 +287,8 @@
                     <tbody>
                         <tr>
                             <th>1</th>
+                            <td>김승현</td>
+                            <td>user11</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -295,6 +296,8 @@
                         </tr>
                         <tr>
                             <th>2</th>
+                            <td>김승현</td>
+                            <td>user22</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -302,6 +305,8 @@
                         </tr>
                         <tr>
                             <th>3</th>
+                            <td>김지은</td>
+                            <td>user33</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -309,6 +314,8 @@
                         </tr>
                         <tr>
                             <th>4</th>
+                            <td>이현아</td>
+                            <td>user44</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -316,13 +323,17 @@
                         </tr>
                         <tr>
                             <th>5</th>
+                            <td>정두식</td>
+                            <td>user55</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
                             <td><button class="btn">삭제</button></td>
                         </tr>
-                        <tr>
+                         <tr>
                             <th>6</th>
+                            <td>김승현</td>
+                            <td>user11</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -330,6 +341,8 @@
                         </tr>
                         <tr>
                             <th>7</th>
+                            <td>김승현</td>
+                            <td>user22</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -337,6 +350,8 @@
                         </tr>
                         <tr>
                             <th>8</th>
+                            <td>김지은</td>
+                            <td>user33</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -344,6 +359,8 @@
                         </tr>
                         <tr>
                             <th>9</th>
+                            <td>이현아</td>
+                            <td>user44</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -351,13 +368,17 @@
                         </tr>
                         <tr>
                             <th>10</th>
+                            <td>정두식</td>
+                            <td>user55</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
                             <td><button class="btn">삭제</button></td>
                         </tr>
-                        <tr>
+                         <tr>
                             <th>11</th>
+                            <td>김승현</td>
+                            <td>user11</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -365,6 +386,8 @@
                         </tr>
                         <tr>
                             <th>12</th>
+                            <td>김승현</td>
+                            <td>user22</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -372,6 +395,8 @@
                         </tr>
                         <tr>
                             <th>13</th>
+                            <td>김지은</td>
+                            <td>user33</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -379,6 +404,8 @@
                         </tr>
                         <tr>
                             <th>14</th>
+                            <td>이현아</td>
+                            <td>user44</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -386,6 +413,8 @@
                         </tr>
                         <tr>
                             <th>15</th>
+                            <td>정두식</td>
+                            <td>user55</td>
                             <td>제목 어쩌고 청소 좋아요</td>
                             <td>2021-12-25</td>
                             <td><button class="btn">수정</button></td>
@@ -407,6 +436,8 @@
                         </li>
                     </ul>
                     </div>
+                   
+                   
 
     </div>
     </div>

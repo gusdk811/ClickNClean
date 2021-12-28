@@ -13,6 +13,10 @@ public class Review {
 	private Date regDate;
 	private String photo;
 	private char endYN;
+	private String content;
+	private String cleanType;
+	private String area;
+	private String userName;
 	
 	
 	
@@ -109,6 +113,42 @@ public class Review {
 
 	public void setEndYN(char endYN) {
 		this.endYN = endYN;
+	}
+
+	
+	
+	
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getCleanType() {
+		return cleanType;
+	}
+
+	public void setCleanType(String cleanType) {
+		this.cleanType = cleanType;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	@Override

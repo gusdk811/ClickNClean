@@ -30,5 +30,51 @@ public class CompanyServiceImpl implements CompanyService{
 		JDBCTemplate.close(conn);
 		return com;
 	}
+	@Override
+	public String searchIdUsingEmail(String roll, String userName, String email) {
+		Connection conn = JDBCTemplate.getConnection();
+		String coId = comDAO.searchIdUsingEmail(conn, roll, userName, email);
+		JDBCTemplate.close(conn);
+		return coId;
+	}
+	@Override
+	public String searchIdUsingPhone(String roll, String userName, String phone) {
+		Connection conn = JDBCTemplate.getConnection();
+		String coId = comDAO.searchIdUsingPhone(conn, roll, userName, phone);
+		JDBCTemplate.close(conn);
+		return coId;
+	}
+	@Override
+	public boolean searchPwdUsingEmail(String roll, String userId, String email) {
+		Connection conn = JDBCTemplate.getConnection();
+		boolean result = comDAO.searchPwdUsingEmail(conn, roll, userId, email);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	@Override
+	public int upadateCompanyPwd(String roll, String userId, String userPwd) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = comDAO.upadateCompanyPwd(conn,roll, userId,userPwd);
+		if(result>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	@Override
+	public boolean searchPwdUsingPhone(String roll, String userId, String phone) {
+		Connection conn = JDBCTemplate.getConnection();
+		boolean result = comDAO.searchPwdUsingPhone(conn, roll, userId, phone);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	@Override
+	public int insertJoinMember(Company com) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result= comDAO.insertJoinMember(conn, com);
+		if(result>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		JDBCTemplate.close(conn);
+		return result;
+	}	
 
 }

@@ -17,7 +17,7 @@
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <link href="/assets/css/footer.css" rel="stylesheet" type="text/css" />
-<link href="/assets/css/selectCondition.css" rel="stylesheet"
+<link href="/assets/css/selectCondition.css?result" rel="stylesheet"
 	type="text/css" />
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -27,6 +27,7 @@
 </style>
 
 <body id="bodycss">
+
 	<jsp:include page="/views/commons/header.jsp" />
 	<div id="contentArea">
 		<div class="contentHead">
@@ -53,7 +54,8 @@
 					<div class="conditionName">청소 장소/평수</div>
 					<div class="houseTypeSize">
 						<select name="houseType"
-							style="width: 70%; height: 120px; font-size: 30px; text-align: center; border-radius: 5px;">
+							style="width: 60%; height: 80px; font-size: 20px; text-align: center; border-radius: 5px;
+							border: 1px #0E76B3 solid;">
 							<option>아파트</option>
 							<option>빌라</option>
 							<option>전원주택</option>
@@ -63,7 +65,8 @@
 					</div>
 					<div class="houseTypeSize">
 						<select name="houseSize"
-							style="width: 70%; height: 120px; font-size: 30px; text-align: center; border-radius: 5px;">
+							style="width: 60%; height: 80px; font-size: 20px; text-align: center; border-radius: 5px;
+							border: 1px #0E76B3 solid;">
 							<option>10평이하</option>
 							<%
 								for (int i = 11; i < 71; i++) {
@@ -83,9 +86,10 @@
 					<div class="conditionName">청소 지역</div>
 					<div class="areaArea">
 						<select name="area1"
-							style="width: 90%; height: 100px; font-size: 30px; text-align: center; border-radius: 5px;"
+							style="width: 80%; height: 80px; font-size: 20px; text-align: center; border-radius: 5px;
+							border: 1px #0E76B3 solid"
 							onchange="categoryChange(this)">
-							<option value>시/도 선택</option>
+							<option >시/도 선택</option>
 							<option value="서울">서울</option>
 							<option value="경기">경기</option>
 							<option value="인천">인천</option>
@@ -107,13 +111,14 @@
 					</div>
 					<div class="areaArea">
 						<select name="area2"
-							style="width: 90%; height: 100px; font-size: 30px; text-align: center; border-radius: 5px;"
-							id="area2">
+							style="width: 80%; height: 80px; font-size: 20px; text-align: center; border-radius: 5px;
+							border: 1px #0E76B3 solid" id="area2" >
 							<option>군/구 선택</option>
 						</select>
 					</div>
 
 					<script>
+						
 						function categoryChange(e) {
 
 							var seoul = [ "강남구", "강동구", "강북구", "강서구", "관악구",
@@ -227,7 +232,9 @@
 								opt.innerHTML = d[x];
 								area2.appendChild(opt);
 							}
+							
 						}
+						
 					</script>
 				</div>
 				<div id="condition4">
@@ -241,9 +248,20 @@
 				</div>
 
 				<input type="submit" style="width: 500px; height: 77px;"
-					id="toInfoBtn" value="업체 프로필 보기">
-
+					id="toInfoBtn" value="업체 프로필 보기" onclick="return validCheck()">
+						
 			</form>
+			<script>
+				function validCheck(){
+					var cleanType=$('select[name=cleanType]').val();
+					var area=$('select[name=area2]').val();
+					var reqDate=$('input[name=reqDate]').val();
+					if(cleanType==''||area=='군/구 선택'||reqDate==''){
+						alert('조건을 모두 선택해야합니다.');
+						return false;
+					}
+				};
+			</script>
 		</div>
 		<script>
 			$(function() {

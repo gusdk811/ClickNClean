@@ -1,0 +1,247 @@
+@charset "UTF-8";
+    * {
+        box-sizing: border-box;
+        font-family: 'NanumSquare';
+    }
+    
+    #wrap {
+
+        width: 1344px;
+        margin: 0 auto;
+        
+    }
+        /*헤더 */
+
+
+        #adminpage{
+             width: 1344px;
+            height: 120px;
+             margin: 0 auto;
+           
+        }
+         #adminpageFont{
+            position: relative;
+            font-size : 35px;
+            top : 38px;
+            left: 580px;
+            color: #555;
+        }
+        /* 메뉴 */
+           #navigator {
+            height: 67px;
+            width : 1344px;
+            margin: 0 auto;
+        }
+        #gnb {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        #gnb a {
+            text-decoration: none;
+            color: #555;
+            width: 100%;
+            display: block;
+            font-size: 20px;
+        }
+        #gnb li {
+            float: left;
+            width: 20%;
+            height: 100%;
+            list-style-type: none;
+            text-align: center;
+            line-height: 70px;
+            
+        }
+        #gnb li:hover {
+            background-color: #0E76B3;
+        }
+        #gnb a:hover {
+            color: white;
+        }
+
+        .line{
+            width: 1344px;
+            height: 6px;
+            background-color: #0E76B3;
+            margin : 0 auto;
+        }
+    
+    /*content*/
+    #mainlistsub{
+        text-align: left;
+        font-size: 25px;
+        position: relative;
+        top: 70px;
+        left: 22px;
+    }
+    
+    #change{
+        text-align: right;
+        padding: 15px;
+    }
+    #btn1{
+        position: absolute;
+        top: 357px;
+        left: 980px;
+    }
+    
+    #btn2{
+        position: absolute;
+        top: 580px;
+        left: 1500px;
+    }
+    
+    #table{
+        width: 900px;
+        text-align: left;
+        padding: 20px;
+    }
+    
+        #listsub{
+        text-align: left;
+        font-size: 25px;
+        height: 25px;
+        width: 250px;
+        margin: 25px;
+ 
+    }
+
+    .btn{
+        background-color: #0E76B3;
+        height: 35px;
+        color: #fafafa;
+        text-align: center;
+        text-decoration: none;
+        padding: 0px 15px;
+    }
+    
+     .btn:hover {
+     background: white; 
+     color: black;
+    }
+    
+    .table2{
+        width: 1344px;
+        height: 500px;
+        font-size: 15px;
+    }
+    
+     #content1 {
+        width: 50%;
+        height: 100%;
+        float: left;
+        box-sizing: border-box;
+         padding: 10px;
+      }
+      #content2 {
+        width: 50%;
+        height: 100%;
+        float: right;
+        box-sizing: border-box;
+        padding: 10px;
+        position: relative;
+        top: -449px;
+      }
+    
+    /*footer*/
+    #footer {
+      
+        width: 100%;
+        height: 302px;
+        background-color: #E6E6E6;
+    }
+
+    #caution {
+        border-top: 1px solid #D9D9D9;
+        border-bottom: 1px solid #D9D9D9;
+        width: 100%;
+        height: 70px;
+        color: #666;
+
+
+    }
+
+    #caution>p {
+        text-align: center;
+        line-height: 70px;
+        font-weight: 600;
+    }
+
+    #footer_inner {
+        padding-top: 20px;
+
+        width: 100%;
+        height: 232px;
+    }
+
+    #footer_inner_center {
+        
+        width: 1344px;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #footer_inner_left {
+        
+        font-weight: bold;
+        width: 26%;
+        height: 100%;
+        padding-left: 83.52px;
+        float: left;
+    }
+
+    #footer_inner_left span {
+        font-size: 20px;
+        color: #666;
+    }
+
+    #footer_inner_left a {
+
+        font-size: 25px;
+        color: black;
+        text-decoration: none;
+        display: block;
+        height: 30px;
+        padding: 10px 0;
+    }
+
+    #footer_inner_right {
+        
+        width: 74%;
+        height: 100%;
+        float: left;
+    }
+
+    #busyInfo {
+        color: #666;
+        font-weight: bold;
+        font-size: 13px;
+        float: left;
+        padding-left: 83.52px;
+    }
+
+    #busyInfo>p:first-child {
+        font-size: 20px;
+        color: #666;
+    }
+
+    #footer_inner_right ul {
+        float: right;
+        display: inline-block;
+        width: 250px;
+        padding-left: 50px;
+        list-style: none;
+    }
+
+    #footer_inner_right ul li {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    #footer_inner_right ul li a {
+        text-decoration: none;
+        color: #666;
+        font-weight: bold;
+    }

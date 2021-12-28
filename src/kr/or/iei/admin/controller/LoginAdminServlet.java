@@ -20,54 +20,55 @@ import kr.or.iei.member.model.vo.Member;
  */
 @WebServlet("/admin/loginAdmin.do")
 public class LoginAdminServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public LoginAdminServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+   /**
+    * @see HttpServlet#HttpServlet()
+    */
+   public LoginAdminServlet() {
+      super();
+      // TODO Auto-generated constructor stub
+   }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		// loginAdmin.jsp 에서 넘겨준 데이터 받기
-		String adminId = request.getParameter("adminId");
-		String adminPwd = request.getParameter("adminPwd");
-		String secureConnect = request.getParameter("secureConnect");
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+    *      response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+      
+      // loginAdmin.jsp 에서 넘겨준 데이터 받기
+      String adminId = request.getParameter("adminId");
+      String adminPwd = request.getParameter("adminPwd");
+      String secureConnect = request.getParameter("secureConnect");
 
-		// userId와 userPwd로 비즈니스 로직 처리
-		AdminService adminService = new AdminServiceImpl();
-		Admin ad = adminService.selectOneUser(adminId, adminPwd);
+      // userId와 userPwd로 비즈니스 로직 처리
+      AdminService adminService = new AdminServiceImpl();
+      Admin ad = adminService.selectOneUser(adminId, adminPwd);
 
-		if (ad != null) { // userId와 userPwd가 일치하는 회원있다면
-			HttpSession session =request.getSession();
-			session.setAttribute("admin", ad);
+      if (ad != null) { // userId와 userPwd가 일치하는 회원있다면
+         HttpSession session =request.getSession();
+         session.setAttribute("admin", ad);
 
-			response.sendRedirect("/");
+			response.sendRedirect("/views/admin/adminMain.jsp");
 
-		} else { // 없다면
-			RequestDispatcher view = request.getRequestDispatcher("/views/commons/loginFail.jsp");
-			view.forward(request, response);
-		}
-		
-		
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+      } else { // 없다면
+         RequestDispatcher view = request.getRequestDispatcher("/views/commons/loginFail.jsp");
+         view.forward(request, response);
+      }
+      
+      
+   }
+
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+    *      response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+      // TODO Auto-generated method stub
+      doGet(request, response);
+   }
 
 }

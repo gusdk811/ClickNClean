@@ -158,4 +158,180 @@ public class CompanyDAO {
         return com;
     }
 
+	public String searchIdUsingEmail(Connection conn, String roll, String userName, String email) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String coId=null;
+		
+		String query="SELECT * FROM COMPANY WHERE coName= ? AND email=? AND roll=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, email);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				coId = rset.getString("coId");
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return coId;
+	}
+
+	public String searchIdUsingPhone(Connection conn, String roll, String userName, String phone) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String coId=null;
+		
+		String query="SELECT * FROM COMPANY WHERE coName= ? AND phone=? AND roll=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				coId = rset.getString("coId");
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return coId;
+	}
+
+	public boolean searchPwdUsingEmail(Connection conn, String roll, String userId, String email) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		boolean result=false;
+		
+		String query="SELECT * FROM COMPANY WHERE coId= ? AND email=? AND roll=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, email);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			result= rset.next();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int upadateCompanyPwd(Connection conn, String roll, String userId, String userPwd) {
+		PreparedStatement pstmt =null;
+		int result=0;
+		
+		String query="UPDATE COMPANY SET coPwd=? WHERE coId=? AND roll=? AND end_YN='N'";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, userPwd);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, roll);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	
+	}
+
+	public boolean searchPwdUsingPhone(Connection conn, String roll, String userId, String phone) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		boolean result=false;
+		
+		String query="SELECT * FROM COMPANY WHERE coId= ? AND phone=? AND roll=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			result = rset.next();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertJoinMember(Connection conn, Company com) {
+		PreparedStatement pstmt =null;
+		int result = 0;
+		
+		String sql="INSERT INTO COMPANY VALUES(CO_SEQ.NEXTVAL, ?,?,?,?,?,?,?,?,?,?,sysdate,'N','N',?,'CO-1')";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, com.getCoId());
+			pstmt.setString(2, com.getCoPwd());
+			pstmt.setString(3, com.getCoName());
+			pstmt.setString(4, com.getPhone());
+			pstmt.setString(5, com.getCeoName());
+			pstmt.setString(6, com.getEmail());
+			pstmt.setString(7, com.getBusNum());
+			pstmt.setString(8, com.getAddress());
+			pstmt.setInt(9, com.getTeam());
+			pstmt.setInt(10, com.getCareer());
+			pstmt.setString(11, com.getTel());
+			
+			result=pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
 }

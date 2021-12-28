@@ -1,3 +1,5 @@
+<%@page import="kr.or.iei.member.model.vo.Member"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,12 +7,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>회원 전체 리스트</title>
+<!-- jQuery 라이브러리 -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="/assets/css/theme.min.css">
     <link rel="stylesheet" href="/assets/css/docs.min.css">
 </head>
 <body>
+
+     <%
+         ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+     %>
+
 <style>
     * {
         box-sizing: border-box;
@@ -216,8 +225,7 @@
     }
 
 </style>
-<body>
-    
+     
     <div id="wrap">
 <div id="header">
             <div id="logo">
@@ -231,15 +239,10 @@
                     <div id="navigator">
                         <ul id="gnb">
                             <li><a href="">Home</a></li>
-                            <li><a href="">관리자 계정</a></li>
-                            <li><a href="">전체 업체 LIST</a></li>
-                            <li><a href="">전체 회원 LIST</a></li>
-                            <li><a href="">게시판 관리</a>
-                            <ul class="sub">
-                                <li><a href="">sub</a></li>
-                                <li><a href="">sub</a></li>
-                                <li><a href="">sub</a></li>
-                            </ul></li>
+                            <li><a href="/admin/adminAccount.do">관리자 계정</a></li>
+                            <li><a href="/admin/companyAllList.do">전체 업체 LIST</a></li>
+                            <li><a href="/admin/memberAllList.do">전체 회원 LIST</a></li>
+                            <li><a href="/board/memberNotice.do">게시판 관리</a>
                             
                         </ul>
             </div>
@@ -264,6 +267,7 @@
                 </div>
                 
                 <!--전체 회원 리스트-->
+                <%if(!list.isEmpty()){ %>
                 <table class="table table-text-center ">
                     <thead style="background-color: #B6E3FC;">
                         <tr>
@@ -276,100 +280,24 @@
                             <th style="width: 10%;">탈퇴여부</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    
+                    <tbody>  
+                    
+                    <%for(Member m : list){ %>
                         <tr>
-                            <th>1</th>
-                            <td>김승현</td>
-                            <td>user11</td>
-                            <td>010-1234-4567</td>
-                            <td>user11@naver.com</td>
-                            <td>2021-12-21</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>김승현</td>
-                            <td>user22</td>
-                            <td>010-9874-1568</td>
-                            <td>user22@naver.com</td>
-                            <td>2021-12-18</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>김지은</td>
-                            <td>user33</td>
-                            <td>010-9632-8741</td>
-                            <td>user33@naver.com</td>
-                            <td>2021-07-21</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>4</th>
-                            <td>이현아</td>
-                            <td>user44</td>
-                            <td>010-4751-1234</td>
-                            <td>user44@naver.com</td>
-                            <td>2021-10-15</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>5</th>
-                            <td>정두식</td>
-                            <td>user55</td>
-                            <td>010-6666-4897</td>
-                            <td>user55@naver.com</td>
-                            <td>2021-03-21</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>6</th>
-                            <td>노민수</td>
-                            <td>user66</td>
-                            <td>010-3265-7845</td>
-                            <td>user66@naver.com</td>
-                            <td>2021-12-25</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>7</th>
-                            <td>노땡수</td>
-                            <td>user77</td>
-                            <td>010-7853-1122</td>
-                            <td>user77@naver.com</td>
-                            <td>2015-05-04</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>8</th>
-                            <td>노러브</td>
-                            <td>user88</td>
-                            <td>010-2288-3214</td>
-                            <td>user88@naver.com</td>
-                            <td>2020-06-21</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>9</th>
-                            <td>이경복</td>
-                            <td>user99</td>
-                            <td>010-1234-9876</td>
-                            <td>user99@naver.com</td>
-                            <td>2021-05-12</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <th>10</th>
-                            <td>김포시</td>
-                            <td>user00</td>
-                            <td>010-5544-1212</td>
-                            <td>user00@naver.com</td>
-                            <td>2019-07-01</td>
-                            <td>N</td>
-                        </tr>
-                        
+                            <th><%=m.getUserNo() %></th>
+                            <td><%=m.getUserName() %></td>
+                            <td><%=m.getUserId() %></td>
+                            <td><%=m.getPhone() %></td>
+                            <td><%=m.getEmail() %></td>
+                            <td><%=m.getEnrollDate() %></td>
+                            <td><%=m.getEndYN() %></td>
+                        </tr> 
+                                             
                     </tbody>
+                    <%} %>
                 </table>
+                <%} %>
                 <!-- 페이징 처리 -->
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">

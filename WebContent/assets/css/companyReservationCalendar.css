@@ -1,0 +1,305 @@
+@charset "UTF-8";
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "NanumSquare", sans-serif;
+}
+
+html {
+	font-family: 62.5%;
+}
+
+
+#allArea {
+	width: 100%;
+	height: 1000px;
+}
+
+
+
+#content {
+	width: 100%;
+	height: 80%;
+}
+
+
+
+#navi {
+	width: 40%;
+	height: 100%;
+	float: left;
+}
+
+#navi-ul {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 50%;
+	font-weight: bolder;
+	box-sizing: border-box;
+}
+
+#navi-ul>li {
+	float: left;
+	width: 25%;
+	height: 100%;
+	text-align: center;
+	list-style-type: none;
+	line-height: 35px;
+}
+
+#navi-ul>li>a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin-top: 18px;
+	color: black;
+	text-decoration: none;
+	font-size: 1rem;
+}
+
+#left-content {
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+
+#center-content {
+	width: 80%;
+	height: 100%;
+	float: left;
+	padding: 10px;
+}
+
+#rigth-content {
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+
+#center-content-top {
+	width: 100%;
+	height: 10%;
+}
+
+#center-content-bottom {
+	width: 100%;
+	height: 90%;
+}
+
+
+    
+.calendar {
+	font-weight: bolder;
+	width: 30rem;
+	height: 35rem;
+	background-color: white;
+	box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
+	
+	width: 30rem;
+}
+
+.month {
+	width: 100%;
+	height: 8rem;
+	background-color: #0099FF;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 2rem;
+	text-align: center;
+	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.month i {
+	font-size: 2.5rem;
+	cursor: pointer;
+}
+
+.month h1 {
+	font-size: 3rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	margin-bottom: 1rem;
+}
+
+.month p {
+	font-size: 1.6rem;
+}
+
+.weekdays {
+	width: 100%;
+	height: 5rem;
+	padding: 0 0.4rem;
+	display: flex;
+	align-items: center
+}
+
+.weekdays div {
+	font-size: 1.5rem;
+	font-weight: 300;
+	letter-spacing: 0.1rem;
+	width: calc(29.2rem/ 7);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.days {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.2rem;
+}
+
+.days div {
+	font-size: 1.4rem;
+	margin: 0.3rem;
+	width: calc(25.2rem/ 7);
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+	transition: background-color 0.2s;
+}
+
+.days div:hover:not(.today){
+    background-color: grey;
+    border: 0.2rem solid #777;
+    cursor: pointer;
+}
+
+.prev-date, .next-date{
+    opacity: 0.5;
+}
+
+.today {
+	background-color: #0099FF;
+}
+
+#footer {
+	width: 100%;
+	height: 302px;
+	background-color: #E6E6E6;
+}
+
+#caution {
+	border-top: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
+	width: 100%;
+	height: 70px;
+	color: #666;
+}
+
+#caution>p {
+	text-align: center;
+	line-height: 70px;
+	font-weight: 600;
+}
+
+#footer_inner {
+	padding-top: 20px;
+	width: 100%;
+	height: 232px;
+}
+
+#footer_inner_center {
+	width: 1344px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#footer_inner_left {;
+	font-weight: bold;
+	width: 26%;
+	height: 100%;
+	padding-left: 83.52px;
+	float: left;
+}
+
+#footer_inner_left span {
+	font-size: 20px;
+	color: #666;
+}
+
+#footer_inner_left a {
+	font-size: 25px;
+	color: black;
+	text-decoration: none;
+	display: block;
+	height: 30px;
+	padding: 10px 0;
+}
+
+#footer_inner_right {
+	width: 74%;
+	height: 100%;
+	float: left;
+}
+
+#busyInfo {
+	color: #666;
+	font-weight: bold;
+	font-size: 13px;
+	float: left;
+	padding-left: 83.52px;
+}
+
+#busyInfo>p:first-child {
+	font-size: 20px;
+	color: #666;
+}
+
+#footer_inner_right ul {
+	float: right;
+	display: inline-block;
+	width: 250px;
+	padding-left: 50px;
+	list-style: none;
+}
+
+#footer_inner_right ul li {
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+#footer_inner_right ul li a {
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+}
+    
+    #reservation{
+        background-color: white;
+        width: 450px;
+        height: 400px;
+        text-align: center;
+       
+    }    
+    
+    #reservationbg{
+        width: 450px;
+        height: 560px;
+        float: left;
+        padding-top: 80px;
+        background-color:#0099FF; 
+         box-sizing: border-box;
+    }
+    #container{
+        width: 500px;
+        height: 570px;
+        float: left;
+    }
+    
+    .container2{
+        width: 200px;
+        height: 570px;
+        float: left;
+    }
+  

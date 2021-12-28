@@ -29,7 +29,7 @@ public class Company {
 	private String roll;
 	private int sumScore;
 	private int reviewNum;
-	
+	private String history;
 	
 
 
@@ -65,6 +65,38 @@ public class Company {
 		this.sumScore = sumScore;
 		this.reviewNum = reviewNum;
 	}
+	
+	public Company(String grade, String coInfo, String area, String cleanType, String history, String meetHour, String workHour) {
+		super();
+		
+		this.grade = grade;
+		this.coInfo = coInfo;
+		this.area = area;
+		this.cleanType = cleanType;
+		this.history = history;
+		this.meetHour = meetHour;
+		this.workHour = workHour;
+	}
+
+
+	
+	// 회원 가입시에 사용하는 생성자
+	public Company(String coId, String coName, String coPwd, String phone, String ceoName, String email, String busNum,
+			String address, int team, int career, String tel) {
+		super();
+		this.coId = coId;
+		this.coName = coName;
+		this.coPwd = coPwd;
+		this.phone = phone;
+		this.ceoName = ceoName;
+		this.email = email;
+		this.busNum = busNum;
+		this.address = address;
+		this.team = team;
+		this.career = career;
+		this.tel = tel;
+	}
+
 
 
 
@@ -268,6 +300,14 @@ public class Company {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public String getHistory() {
+		return history;
+	}
+
+	public void setHistory(String history) {
+		this.history = history;
 	}
 	
 	

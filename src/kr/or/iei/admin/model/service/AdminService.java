@@ -1,15 +1,16 @@
 package kr.or.iei.admin.model.service;
 
+import java.util.ArrayList;
+
 import kr.or.iei.admin.model.vo.Admin;
+import kr.or.iei.admin.model.vo.HeadOffice;
 
 public interface AdminService {
 
-	/**
-	 * @Author : SeungHyun Kim(kshlove735)
-	 * @Date : 2021. 12. 24.
-	 * @return : Admin
-	 * @subscription : 관리자 로그인 
-	 */
-	public Admin selectOneUser(String adminId, String adminPwd);
+	Admin selectOneUser(String adminId, String adminPwd);
+
+	ArrayList<Admin> adminAccount();
+
+	ArrayList<HeadOffice> headOffice();
 
 }

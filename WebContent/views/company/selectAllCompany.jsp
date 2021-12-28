@@ -107,7 +107,13 @@
 			</div>
 			<div id="right">
 				<div id="reviewArea">
-					<div id="review">평점 :  / 리뷰수 :</div>
+					<%
+					int score=0;
+					if(com.getReviewNum()!=0){
+						score=com.getSumScore()/com.getReviewNum();
+					}
+					%>
+					<div id="review">평점 : <%=score %> / 리뷰수 : <%=com.getReviewNum() %></div>
 				</div>
 				<div id="infoArea">
 					<div id="info">업체소개<%=com.getCoInfo() %></div>

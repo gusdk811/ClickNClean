@@ -61,4 +61,7 @@ public interface ReviewService {
 
 	int reviewDelete(int reviewNo, String userId);
 
+
+	HashMap<String, Object> ReviewAllList(String coId, int currentPage);
+
 }

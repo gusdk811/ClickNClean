@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	font-family: 'NanumSquare';
+	color: #555;
+	font-size: 16px;
+	background-color: #fafafa;
+}
+
+#wrap {
+	/*border: 1px solid blue;*/
+	width: 100%;
+	height: 872px;
+	margin: 0 auto;
+}
+
+/*헤더*/
+#header {
+	border: 1px solid red;
+	width: 100%;
+	height: 70px;
+}
+
+/*콘텐츠*/
+#content {
+	/*border: 1px solid red;*/
+	width: 100%;
+	height: 500px;
+}
+
+#content_inner {
+	/*border: 1px solid purple;*/
+	width: 1344px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#showId {
+	/*border: 1px solid blue;*/
+	width: 400px;
+	height: 501px;
+	margin: 80px auto;
+}
+
+#findPwdbtn {
+	width: 100%;
+	height: 50px;
+	margin-top: 17px;
+	border-radius: 5px;
+}
+
+#findPwdbtn a {
+	line-height: 50px;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+	border-radius: 5px;
+	background-color: #0E76B3;
+	border-color: #0E76B3;
+	color: #fafafa;
+	box-shadow: 0px 3px 6px rgb(0 0 0/ 16%);
+	border: 1px solid #0E76B3;
+}
+
+#loginbtn {
+	width: 100%;
+	height: 50px;
+	margin-top: 17px;
+	border-radius: 5px;
+	border: 1px solid #0E76B3;
+}
+
+#loginbtn a {
+	line-height: 50px;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+	border-radius: 5px;
+	background-color: #fafafa;
+	border-color: #0E76B3;
+	color: #0E76B3;
+	box-shadow: 0px 3px 6px rgb(0 0 0/ 16%);
+}
+
+#showId>div>h2 {
+	font-size: 24px;
+	margin-bottom: 9px;
+}
+
+#showId_center {
+	width: 100%;
+	height: 60px;
+	/* border: 1px solid red;*/
+	margin: 30px 0px 50px 0px;
+}
+
+#showId_center>div:first-child {
+	width: 30%;
+	height: 100%;
+	float: left
+}
+
+#showId_center>div:last-child {
+	width: 70%;
+	height: 100%;
+	float: left
+}
+
+#showId_center div:nth-child(2) p {
+	font-size: 20px;
+	font-weight: 600;
+	display: inline-block;
+	margin: 0;
+	line-height: 60px;
+}
+
+#showId_center div:first-child {
+	text-align: center;
+}
+
+#showId_center div:first-child img {
+	width: 50px;
+	height: 50px;
+	margin-top: 5px;
+}
+
+/*풋터*/
+#footer {
+	border: 1px solid red;
+	width: 100%;
+	height: 302px;
+	background-color: #E6E6E6;
+}

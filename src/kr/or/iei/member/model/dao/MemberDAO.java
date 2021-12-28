@@ -16,10 +16,10 @@ public class MemberDAO {
 		Member m = null;
 		
 		// userId와 userPwd가 일치하고 탈퇴하지 않은 회원 검색
-		String sql = "SELECT * FROM MEMBER WHERE userId=? AND userPwd=? AND end_yn='N'";
+		String query = "SELECT * FROM MEMBER WHERE userId=? AND userPwd=? AND end_yn='N'";
 		
 		try {
-			pstmt=conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			rset=pstmt.executeQuery();
@@ -121,6 +121,201 @@ public class MemberDAO {
 		return result;
 		
 		
+	}
+
+	public String searchIdUsingEmail(Connection conn, String roll, String userName, String email) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String userId=null;
+		
+		String query="SELECT * FROM MEMBER WHERE userName= ? AND email=? AND roll=? AND end_YN='N'";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, email);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				userId = rset.getString("userId");
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return userId;
+	}
+
+	public String searchIdUsingPhone(Connection conn, String roll, String userName, String phone) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String userId=null;
+		
+		String query="SELECT * FROM MEMBER WHERE userName= ? AND phone=? AND roll=? AND end_YN='N'";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				userId = rset.getString("userId");
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return userId;
+	}
+
+	public boolean searchPwdUsingEmail(Connection conn, String roll, String userId, String email) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		boolean result=false;
+		
+		String query="SELECT * FROM MEMBER WHERE userId= ? AND email=? AND roll=? AND end_YN='N'";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, email);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			result= rset.next();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateMemberPwd(Connection conn, String roll, String userId, String userPwd) {
+		PreparedStatement pstmt =null;
+		int result=0;
+		
+		String query="UPDATE MEMBER SET userPwd=? WHERE userId=? AND roll=? AND end_YN='N'";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, userPwd);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, roll);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public boolean searchPwdUsingPhone(Connection conn, String roll, String userId, String phone) {
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		boolean result=false;
+		
+		String query="SELECT * FROM MEMBER WHERE userId= ? AND phone=? AND roll=? AND end_YN='N'";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, roll);
+			
+			rset= pstmt.executeQuery();
+			
+			result = rset.next();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertJoinMember(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO MEMBER VALUES(USER_SEQ.NEXTVAL,?,?,?,?,?, default, 'N',default)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserPwd());
+			pstmt.setString(3, m.getUserName());
+			pstmt.setString(4, m.getPhone());
+			pstmt.setString(5, m.getEmail());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public boolean checkDuplicateId(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean result = false;
+		
+		String query="SELECT * " + 
+				"FROM " + 
+				"(SELECT USERID  FROM MEMBER " + 
+				"UNION ALL " + 
+				"SELECT COID FROM COMPANY) " + 
+				"WHERE USERID=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset=pstmt.executeQuery();
+			result= rset.next();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 	

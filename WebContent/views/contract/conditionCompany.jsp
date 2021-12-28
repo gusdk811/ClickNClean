@@ -38,6 +38,7 @@
             </div>
         </div>
         <span id="bodyTitle"></span>
+        	<%if(!list.isEmpty()){ %>
 			<%for(Company com:list){ %>
             <div class="contentBody">
             <div id=left>
@@ -46,6 +47,7 @@
                </div> 
                <div id=toInfoArea>
                    <form>
+                   		<input type="hidden" name="coId" value="<%=com.getCoId() %>"  />
                        <input type="submit" style="height: 60px" id="toInfoBtn" class="btn btn-outline-info" value="업체 프로필 보기">
                        
                    </form>
@@ -53,30 +55,72 @@
             </div>
             <div id=right>
                 <div id=reviewArea>
+                <%
+					int score=0;
+					if(com.getReviewNum()!=0){
+						score=com.getSumScore()/com.getReviewNum();
+					}
+					%>
                     <div id=review>
-                        
+                        평점 : <%=score %> / 리뷰수 : <%=com.getReviewNum() %>
                     </div>
                 </div>
                 <div id=infoArea>
                     <div id=info>
-                        
+                        업체소개<%=com.getCoInfo() %>
                     </div>
                 </div>
                 <div id=sideArea>
                     <div id=side>
-                        
+                    <%
+                    int size=(int)request.getAttribute("size");
+                    int price=size*com.getPrice();	
+                    %>
+                        예상가격 : <span id="price"><%= price%></span>
                         
                     </div>
                     <div id=contractArea>
+                    	<input type="hidden" id="userId" value="${sessionScope.member.userId }"   />
+                    	<input type="hidden" id="coId" value="<%=com.getCoId() %>"   />
+                    	<input type="hidden" id="conditionNo" value="${requestScope.conditionNo }"   />
                         <button id="contractBtn"
                         style="width: 100%; height: 100%;"
-                        class="btn btn-outline-info">
-                        바로 연락 해보기
+                        class="btn btn-outline-info"> 바로 연락 해보기
                         </button>
+                        <script>
+                        	$('#contractBtn').click(function(){
+                        		var userId=$(this).prev().prev().prev().val();
+                        		var coId=$(this).prev().prev().val();
+                        		var conditionNo=$(this).prev().val();
+                        		var price=$('#price').html();
+                        		$.ajax({
+                        			url:"/contract/insertContract.do",
+                        			data:{userId:userId,coId:coId,conditionNo:conditionNo,price:price},
+                        			type:"post",
+                        			success:function(result){
+                        				if(result='success'){
+                        					alert('청소 요청 완료 되었습니다.');
+                        				}else{
+                        					alert('청소 요청에 실패 하였습니다. 지속적인 오류시 관리자에게 문의해주세요.');
+                        					
+                        				}
+                        				location.replace('/views/');
+                        			},
+                        			error:function(){
+                        				alert('오류가 발생했습니다.');
+                        				location.replace('/views/commons/error.jsp');
+                        			}
+                        			
+                        		});
+                        	});
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
+        <%} %>
+			<%}else{ %>
+				조건 사항에 해당하는 업체가 없습니다.
 			<%} %>
     </div>
 		<div id="footer">

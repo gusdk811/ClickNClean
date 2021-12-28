@@ -1,16 +1,23 @@
+<%@page import="kr.or.iei.admin.model.vo.HeadOffice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>관리자 페이지 메인</title>
+ <!-- Title -->
+    <title>관리자 페이지 메인</title>
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="/assets/css/theme.min.css">
     <link rel="stylesheet" href="/assets/css/docs.min.css">
+    <!-- jQuery 라이브러리 -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
 </head>
 <body>
+
+
 <style>
     * {
         box-sizing: border-box;
@@ -24,7 +31,7 @@
         margin: 0 auto;
         
     }
-        /*헤더 */
+        /*헤더 부분 */
         #header{
             width: 100%;
             height: 70px;
@@ -58,7 +65,7 @@
             left: 580px;
             color: #555;
         }
-        /* 메뉴 */
+        /* 메뉴 바 */
            #navigator {
             height: 67px;
             width : 1344px;
@@ -99,7 +106,7 @@
             background-color: #0E76B3;
             margin : 0 auto;
         }
-    /*content*/
+    
     #mainlistsub{
         text-align: left;
         font-size: 25px;
@@ -278,7 +285,7 @@
     }
 
 </style>
-<body> 
+
     <div id="wrap">
 <div id="header">
             <div id="logo">
@@ -292,15 +299,10 @@
                     <div id="navigator">
                         <ul id="gnb">
                             <li><a href="">Home</a></li>
-                            <li><a href="">관리자 계정</a></li>
-                            <li><a href="">전체 업체 LIST</a></li>
-                            <li><a href="">전체 회원 LIST</a></li>
-                            <li><a href="">게시판 관리</a>
-                            <ul class="sub">
-                                <li><a href="">sub</a></li>
-                                <li><a href="">sub</a></li>
-                                <li><a href="">sub</a></li>
-                            </ul></li>
+                            <li><a href="/admin/adminAccount.do">관리자 계정</a></li>
+                            <li><a href="/admin/companyAllList.do">전체 업체 LIST</a></li>
+                            <li><a href="/admin/memberAllList.do">전체 회원 LIST</a></li>
+                            <li><a href="/board/memberNotice.do">게시판 관리</a>
                             
                         </ul>
             </div>
@@ -329,19 +331,19 @@
                     <tbody>
                         <tr>
                             <th>사이트 명</th>
-                            <td>클릭 N 클린</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th>사이트 URL</th>
-                            <td>http://clicknclean.com</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th>사업자 등록번호</th>
-                            <td>585-86-00882</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th>업체 주소</th>
-                            <td>서울특별시 중구 세종대로 136 파이낸스빌딩 3층 저스트코 S3119 (태평로1가)</td>
+                            <td></td>
                         </tr>
                   
                     </tbody>
@@ -534,6 +536,7 @@
     </div>
            </div>     
             
+    <!-- End Table -->
             <!--푸터-->
         <div id="footer">
             <div id="caution">
@@ -577,5 +580,6 @@
                 </div>
             </div>
         </div>
+
 </body>
 </html>

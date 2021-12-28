@@ -1,10 +1,12 @@
 package kr.or.iei.contract.model.vo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Contract {
 
-	private String contractNo;
+
+	private int contractNo;
 	private String conditionNo;
 	private String userId;
 	private String coId;
@@ -23,13 +25,16 @@ public class Contract {
 	private int houseSize;
 	private Date reqDate;
 	private String coName;
+	private String phone;
+	private String email;
+	private String userName;
 	
 	public Contract() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Contract(String contractNo, String conditionNo, String userId, String coId, int price, char reqContractYN,
+	public Contract(int contractNo, String conditionNo, String userId, String coId, int price, char reqContractYN,
 			Date reqContractDate, char coCheckYN, Date coCheckDate, char contractYN, Date contractFinDate, char cleanYN,
 			Date cleanDate, String coName) {
 		super();
@@ -63,11 +68,12 @@ public class Contract {
 
 	
 
-	public String getContractNo() {
+	
+
+	public int getContractNo() {
 		return contractNo;
 	}
-
-	public void setContractNo(String contractNo) {
+	public void setContractNo(int ContractNo) {
 		this.contractNo = contractNo;
 	}
 
@@ -213,6 +219,31 @@ public class Contract {
 
 	public void setCoName(String coName) {
 		this.coName = coName;
+	}
+	
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	@Override
